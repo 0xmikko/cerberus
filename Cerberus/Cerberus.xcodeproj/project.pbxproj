@@ -1,0 +1,662 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		7463F52F235FACAF008C1137 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7463F52E235FACAF008C1137 /* AppDelegate.swift */; };
+		7463F531235FACAF008C1137 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7463F530235FACAF008C1137 /* SceneDelegate.swift */; };
+		7463F533235FACAF008C1137 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7463F532235FACAF008C1137 /* ContentView.swift */; };
+		7463F535235FACB2008C1137 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7463F534235FACB2008C1137 /* Assets.xcassets */; };
+		7463F538235FACB2008C1137 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7463F537235FACB2008C1137 /* Preview Assets.xcassets */; };
+		7463F53B235FACB2008C1137 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7463F539235FACB2008C1137 /* LaunchScreen.storyboard */; };
+		7463F540235FACB2008C1137 /* Cerberus WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 7463F53F235FACB2008C1137 /* Cerberus WatchKit App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		7463F546235FACB2008C1137 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7463F544235FACB2008C1137 /* Interface.storyboard */; };
+		7463F548235FACB3008C1137 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7463F547235FACB3008C1137 /* Assets.xcassets */; };
+		7463F54F235FACB3008C1137 /* Cerberus WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 7463F54E235FACB3008C1137 /* Cerberus WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		7463F554235FACB3008C1137 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7463F553235FACB3008C1137 /* ContentView.swift */; };
+		7463F556235FACB3008C1137 /* HostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7463F555235FACB3008C1137 /* HostingController.swift */; };
+		7463F558235FACB3008C1137 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7463F557235FACB3008C1137 /* ExtensionDelegate.swift */; };
+		7463F55A235FACB3008C1137 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7463F559235FACB3008C1137 /* NotificationController.swift */; };
+		7463F55C235FACB3008C1137 /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7463F55B235FACB3008C1137 /* NotificationView.swift */; };
+		7463F55E235FACB3008C1137 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7463F55D235FACB3008C1137 /* Assets.xcassets */; };
+		7463F561235FACB3008C1137 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7463F560235FACB3008C1137 /* Preview Assets.xcassets */; };
+		7463F57223609AFF008C1137 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7463F57123609AFF008C1137 /* Storyboard.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		7463F541235FACB2008C1137 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7463F523235FACAF008C1137 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7463F53E235FACB2008C1137;
+			remoteInfo = "Cerberus WatchKit App";
+		};
+		7463F550235FACB3008C1137 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7463F523235FACAF008C1137 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7463F54D235FACB3008C1137;
+			remoteInfo = "Cerberus WatchKit Extension";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		7463F569235FACB3008C1137 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				7463F54F235FACB3008C1137 /* Cerberus WatchKit Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7463F56D235FACB3008C1137 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				7463F540235FACB2008C1137 /* Cerberus WatchKit App.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		7463F52B235FACAF008C1137 /* Cerberus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cerberus.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7463F52E235FACAF008C1137 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		7463F530235FACAF008C1137 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		7463F532235FACAF008C1137 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		7463F534235FACB2008C1137 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		7463F537235FACB2008C1137 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		7463F53A235FACB2008C1137 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		7463F53C235FACB2008C1137 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7463F53F235FACB2008C1137 /* Cerberus WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Cerberus WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7463F545235FACB2008C1137 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		7463F547235FACB3008C1137 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		7463F549235FACB3008C1137 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7463F54E235FACB3008C1137 /* Cerberus WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Cerberus WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7463F553235FACB3008C1137 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		7463F555235FACB3008C1137 /* HostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostingController.swift; sourceTree = "<group>"; };
+		7463F557235FACB3008C1137 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
+		7463F559235FACB3008C1137 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
+		7463F55B235FACB3008C1137 /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
+		7463F55D235FACB3008C1137 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		7463F560235FACB3008C1137 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		7463F562235FACB3008C1137 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7463F563235FACB3008C1137 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		7463F57123609AFF008C1137 /* Storyboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		7463F528235FACAF008C1137 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7463F54B235FACB3008C1137 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		7463F522235FACAF008C1137 = {
+			isa = PBXGroup;
+			children = (
+				7463F52D235FACAF008C1137 /* Cerberus */,
+				7463F543235FACB2008C1137 /* Cerberus WatchKit App */,
+				7463F552235FACB3008C1137 /* Cerberus WatchKit Extension */,
+				7463F52C235FACAF008C1137 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		7463F52C235FACAF008C1137 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7463F52B235FACAF008C1137 /* Cerberus.app */,
+				7463F53F235FACB2008C1137 /* Cerberus WatchKit App.app */,
+				7463F54E235FACB3008C1137 /* Cerberus WatchKit Extension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7463F52D235FACAF008C1137 /* Cerberus */ = {
+			isa = PBXGroup;
+			children = (
+				7463F52E235FACAF008C1137 /* AppDelegate.swift */,
+				7463F530235FACAF008C1137 /* SceneDelegate.swift */,
+				7463F532235FACAF008C1137 /* ContentView.swift */,
+				7463F57123609AFF008C1137 /* Storyboard.storyboard */,
+				7463F534235FACB2008C1137 /* Assets.xcassets */,
+				7463F539235FACB2008C1137 /* LaunchScreen.storyboard */,
+				7463F53C235FACB2008C1137 /* Info.plist */,
+				7463F536235FACB2008C1137 /* Preview Content */,
+			);
+			path = Cerberus;
+			sourceTree = "<group>";
+		};
+		7463F536235FACB2008C1137 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				7463F537235FACB2008C1137 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		7463F543235FACB2008C1137 /* Cerberus WatchKit App */ = {
+			isa = PBXGroup;
+			children = (
+				7463F544235FACB2008C1137 /* Interface.storyboard */,
+				7463F547235FACB3008C1137 /* Assets.xcassets */,
+				7463F549235FACB3008C1137 /* Info.plist */,
+			);
+			path = "Cerberus WatchKit App";
+			sourceTree = "<group>";
+		};
+		7463F552235FACB3008C1137 /* Cerberus WatchKit Extension */ = {
+			isa = PBXGroup;
+			children = (
+				7463F553235FACB3008C1137 /* ContentView.swift */,
+				7463F555235FACB3008C1137 /* HostingController.swift */,
+				7463F557235FACB3008C1137 /* ExtensionDelegate.swift */,
+				7463F559235FACB3008C1137 /* NotificationController.swift */,
+				7463F55B235FACB3008C1137 /* NotificationView.swift */,
+				7463F55D235FACB3008C1137 /* Assets.xcassets */,
+				7463F562235FACB3008C1137 /* Info.plist */,
+				7463F563235FACB3008C1137 /* PushNotificationPayload.apns */,
+				7463F55F235FACB3008C1137 /* Preview Content */,
+			);
+			path = "Cerberus WatchKit Extension";
+			sourceTree = "<group>";
+		};
+		7463F55F235FACB3008C1137 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				7463F560235FACB3008C1137 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		7463F52A235FACAF008C1137 /* Cerberus */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7463F56E235FACB3008C1137 /* Build configuration list for PBXNativeTarget "Cerberus" */;
+			buildPhases = (
+				7463F527235FACAF008C1137 /* Sources */,
+				7463F528235FACAF008C1137 /* Frameworks */,
+				7463F529235FACAF008C1137 /* Resources */,
+				7463F56D235FACB3008C1137 /* Embed Watch Content */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7463F542235FACB2008C1137 /* PBXTargetDependency */,
+			);
+			name = Cerberus;
+			productName = Cerberus;
+			productReference = 7463F52B235FACAF008C1137 /* Cerberus.app */;
+			productType = "com.apple.product-type.application";
+		};
+		7463F53E235FACB2008C1137 /* Cerberus WatchKit App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7463F56A235FACB3008C1137 /* Build configuration list for PBXNativeTarget "Cerberus WatchKit App" */;
+			buildPhases = (
+				7463F53D235FACB2008C1137 /* Resources */,
+				7463F569235FACB3008C1137 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7463F551235FACB3008C1137 /* PBXTargetDependency */,
+			);
+			name = "Cerberus WatchKit App";
+			productName = "Cerberus WatchKit App";
+			productReference = 7463F53F235FACB2008C1137 /* Cerberus WatchKit App.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		7463F54D235FACB3008C1137 /* Cerberus WatchKit Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7463F566235FACB3008C1137 /* Build configuration list for PBXNativeTarget "Cerberus WatchKit Extension" */;
+			buildPhases = (
+				7463F54A235FACB3008C1137 /* Sources */,
+				7463F54B235FACB3008C1137 /* Frameworks */,
+				7463F54C235FACB3008C1137 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Cerberus WatchKit Extension";
+			productName = "Cerberus WatchKit Extension";
+			productReference = 7463F54E235FACB3008C1137 /* Cerberus WatchKit Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		7463F523235FACAF008C1137 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1100;
+				LastUpgradeCheck = 1100;
+				ORGANIZATIONNAME = "Mikhail Lazarev";
+				TargetAttributes = {
+					7463F52A235FACAF008C1137 = {
+						CreatedOnToolsVersion = 11.0;
+					};
+					7463F53E235FACB2008C1137 = {
+						CreatedOnToolsVersion = 11.0;
+					};
+					7463F54D235FACB3008C1137 = {
+						CreatedOnToolsVersion = 11.0;
+					};
+				};
+			};
+			buildConfigurationList = 7463F526235FACAF008C1137 /* Build configuration list for PBXProject "Cerberus" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 7463F522235FACAF008C1137;
+			productRefGroup = 7463F52C235FACAF008C1137 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7463F52A235FACAF008C1137 /* Cerberus */,
+				7463F53E235FACB2008C1137 /* Cerberus WatchKit App */,
+				7463F54D235FACB3008C1137 /* Cerberus WatchKit Extension */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		7463F529235FACAF008C1137 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7463F53B235FACB2008C1137 /* LaunchScreen.storyboard in Resources */,
+				7463F57223609AFF008C1137 /* Storyboard.storyboard in Resources */,
+				7463F538235FACB2008C1137 /* Preview Assets.xcassets in Resources */,
+				7463F535235FACB2008C1137 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7463F53D235FACB2008C1137 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7463F548235FACB3008C1137 /* Assets.xcassets in Resources */,
+				7463F546235FACB2008C1137 /* Interface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7463F54C235FACB3008C1137 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7463F561235FACB3008C1137 /* Preview Assets.xcassets in Resources */,
+				7463F55E235FACB3008C1137 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		7463F527235FACAF008C1137 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7463F52F235FACAF008C1137 /* AppDelegate.swift in Sources */,
+				7463F531235FACAF008C1137 /* SceneDelegate.swift in Sources */,
+				7463F533235FACAF008C1137 /* ContentView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7463F54A235FACB3008C1137 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7463F556235FACB3008C1137 /* HostingController.swift in Sources */,
+				7463F554235FACB3008C1137 /* ContentView.swift in Sources */,
+				7463F55A235FACB3008C1137 /* NotificationController.swift in Sources */,
+				7463F558235FACB3008C1137 /* ExtensionDelegate.swift in Sources */,
+				7463F55C235FACB3008C1137 /* NotificationView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		7463F542235FACB2008C1137 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7463F53E235FACB2008C1137 /* Cerberus WatchKit App */;
+			targetProxy = 7463F541235FACB2008C1137 /* PBXContainerItemProxy */;
+		};
+		7463F551235FACB3008C1137 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7463F54D235FACB3008C1137 /* Cerberus WatchKit Extension */;
+			targetProxy = 7463F550235FACB3008C1137 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		7463F539235FACB2008C1137 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7463F53A235FACB2008C1137 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		7463F544235FACB2008C1137 /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7463F545235FACB2008C1137 /* Base */,
+			);
+			name = Interface.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		7463F564235FACB3008C1137 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		7463F565235FACB3008C1137 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		7463F567235FACB3008C1137 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"Cerberus WatchKit Extension/Preview Content\"";
+				DEVELOPMENT_TEAM = QJLCQDHMR4;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "Cerberus WatchKit Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.dtxperts.Cerberus.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 6.0;
+			};
+			name = Debug;
+		};
+		7463F568235FACB3008C1137 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"Cerberus WatchKit Extension/Preview Content\"";
+				DEVELOPMENT_TEAM = QJLCQDHMR4;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "Cerberus WatchKit Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.dtxperts.Cerberus.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 6.0;
+			};
+			name = Release;
+		};
+		7463F56B235FACB3008C1137 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = QJLCQDHMR4;
+				IBSC_MODULE = Cerberus_WatchKit_Extension;
+				INFOPLIST_FILE = "Cerberus WatchKit App/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = com.dtxperts.Cerberus.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 6.0;
+			};
+			name = Debug;
+		};
+		7463F56C235FACB3008C1137 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = QJLCQDHMR4;
+				IBSC_MODULE = Cerberus_WatchKit_Extension;
+				INFOPLIST_FILE = "Cerberus WatchKit App/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = com.dtxperts.Cerberus.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 6.0;
+			};
+			name = Release;
+		};
+		7463F56F235FACB3008C1137 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"Cerberus/Preview Content\"";
+				DEVELOPMENT_TEAM = QJLCQDHMR4;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = Cerberus/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.dtxperts.Cerberus;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		7463F570235FACB3008C1137 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"Cerberus/Preview Content\"";
+				DEVELOPMENT_TEAM = QJLCQDHMR4;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = Cerberus/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.dtxperts.Cerberus;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		7463F526235FACAF008C1137 /* Build configuration list for PBXProject "Cerberus" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7463F564235FACB3008C1137 /* Debug */,
+				7463F565235FACB3008C1137 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7463F566235FACB3008C1137 /* Build configuration list for PBXNativeTarget "Cerberus WatchKit Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7463F567235FACB3008C1137 /* Debug */,
+				7463F568235FACB3008C1137 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7463F56A235FACB3008C1137 /* Build configuration list for PBXNativeTarget "Cerberus WatchKit App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7463F56B235FACB3008C1137 /* Debug */,
+				7463F56C235FACB3008C1137 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7463F56E235FACB3008C1137 /* Build configuration list for PBXNativeTarget "Cerberus" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7463F56F235FACB3008C1137 /* Debug */,
+				7463F570235FACB3008C1137 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 7463F523235FACAF008C1137 /* Project object */;
+}
