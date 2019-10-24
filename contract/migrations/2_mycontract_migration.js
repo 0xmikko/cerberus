@@ -1,4 +1,4 @@
-let MyContract = artifacts.require('MyContract')
+let MyContract = artifacts.require('CerberusWallet')
 let LinkToken = artifacts.require('LinkToken')
 let Oracle = artifacts.require('Oracle')
 
@@ -8,7 +8,7 @@ module.exports = (deployer, network) => {
   if (!network.startsWith('live')) {
     deployer.deploy(LinkToken).then(() => {
       return deployer.deploy(Oracle, LinkToken.address).then(() => {
-        return deployer.deploy(MyContract, LinkToken.address)
+        return deployer.deploy(MyContract, '0x20fE562d797A42Dcb3399062AE9546cd06f63280') //LinkToken.address)
       })
     })
   } else {

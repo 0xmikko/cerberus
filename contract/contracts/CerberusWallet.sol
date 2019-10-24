@@ -4,13 +4,21 @@ import "chainlink/contracts/ChainlinkClient.sol";
 import "openzeppelin-solidity/contracts/ownership/Ownable.sol";
 
 /**
- * @title MyContract is an example contract which requests data from
+ * @title CerberusWallet is an example contract which requests data from
  * the Chainlink network
  * @dev This contract is designed to work on multiple networks, including
  * local test networks
  */
-contract MyContract is ChainlinkClient, Ownable {
+contract CerberusWallet is ChainlinkClient, Ownable {
   uint256 public data;
+  uint256 oraclePayment;
+  event NewPaymentRegistered(address to, int256 amount);
+  event GetPermission(bytes32 id);
+
+  struct PaymentRequest {
+    address recipient;
+    int256 amount;
+  }
 
   /**
    * @notice Deploy the contract with a specified address for the LINK
@@ -64,19 +72,7 @@ contract MyContract is ChainlinkClient, Ownable {
     requestId = sendChainlinkRequestTo(_oracle, req, _payment);
   }
 
-  /**
-   * @notice The fulfill method from requests created by this contract
-   * @dev The recordChainlinkFulfillment protects this function from being called
-   * by anyone other than the oracle address that the request was sent to
-   * @param _requestId The ID that was generated for the request
-   * @param _data The answer provided by the oracle
-   */
-  function fulfill(bytes32 _requestId, uint256 _data)
-    public
-    recordChainlinkFulfillment(_requestId)
-  {
-    data = _data;
-  }
+
 
   /**
    * @notice Allows the owner to withdraw any LINK balance on the contract
@@ -105,4 +101,29 @@ contract MyContract is ChainlinkClient, Ownable {
   {
     cancelChainlinkRequest(_requestId, _payment, _callbackFunctionId, _expiration);
   }
+
+
+  function makePaymentRequest(address _oracle,  bytes32 _jobId,  uint256 _payment, address _to, int256 _amount) {
+    emit NewPaymentRegistered(_to, _amount);
+    Chainlink.Request memory req = buildChainlinkRequest(_jobId, this, this.fulfill.selector);
+    req.addUint("until", now + 1 minutes);
+    sendChainlinkRequestTo(_oracle, req, _payment);
+
+  }
+
+  /**
+   * @notice The fulfill method from requests created by this contract
+   * @dev The recordChainlinkFulfillment protects this function from being called
+   * by anyone other than the oracle address that the request was sent to
+   * @param _requestId The ID that was generated for the request
+   * @param _data The answer provided by the oracle
+   */
+  function fulfill(bytes32 _requestId, uint256 _data)
+  public
+  recordChainlinkFulfillment(_requestId)
+  {
+    emit GetPermission(_requestId);
+  }
+
+
 }

@@ -6,7 +6,7 @@ const h = require('chainlink-test-helpers')
 contract('MyContract', accounts => {
   const LinkToken = artifacts.require('LinkToken.sol')
   const Oracle = artifacts.require('Oracle.sol')
-  const MyContract = artifacts.require('MyContract.sol')
+  const MyContract = artifacts.require('CerberusWallet.sol')
 
   const defaultAccount = accounts[0]
   const oracleNode = accounts[1]

@@ -16,6 +16,13 @@ module.exports = {
       // Should be fixed in Truffle 5.0.17
       skipDryRun: true,
     },
+    ropsten: {
+      provider: () => {
+        return new HDWalletProvider(process.env.MNEMONIC, process.env.RPC_URL)
+      },
+      network_id: 3,
+      gas: 4000000      //make sure this gas allocation isn't over 4M, which is the max
+    },
   },
   compilers: {
     solc: {
