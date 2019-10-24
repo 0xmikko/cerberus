@@ -7,108 +7,139 @@
  */
 
 import React from 'react';
+import {Provider} from 'react-redux';
 import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
-} from 'react-native';
+  createStackNavigator,
+  createAppContainer,
+  createSwitchNavigator,
+  createBottomTabNavigator,
+} from 'react-navigation';
+import {Icon} from 'react-native-elements';
+import {ThemeProvider} from 'react-native-elements';
 
-import {
-  Header,
-  LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+import configureStore from './src/store/configureStore';
 
-const App: () => React$Node = () => {
-  return (
-    <>
-      <StatusBar barStyle="dark-content" />
-      <SafeAreaView>
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-          style={styles.scrollView}>
-          <Header />
-          {global.HermesInternal == null ? null : (
-            <View style={styles.engine}>
-              <Text style={styles.footer}>Engine: Hermes</Text>
-            </View>
-          )}
-          <View style={styles.body}>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Step One</Text>
-              <Text style={styles.sectionDescription}>
-                Edit <Text style={styles.highlight}>App.js</Text> to change this
-                screen and then come back to see your edits.
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>See Your Changes</Text>
-              <Text style={styles.sectionDescription}>
-                <ReloadInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Debug</Text>
-              <Text style={styles.sectionDescription}>
-                <DebugInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Learn More</Text>
-              <Text style={styles.sectionDescription}>
-                Read the docs to discover what to do next:
-              </Text>
-            </View>
-            <LearnMoreLinks />
-          </View>
-        </ScrollView>
-      </SafeAreaView>
-    </>
-  );
-};
+// AuthStack
+import AuthSwitcherScreen from './src/screens/Auth/AuthSwitcherScreen';
+import LoginScreen from './src/screens/Auth/LoginScreen';
+import SignUpScreen from './src/screens/Auth/SignUpScreen';
+import ErrorScreen from './src/screens/Auth/ErrorScreen';
 
-const styles = StyleSheet.create({
-  scrollView: {
-    backgroundColor: Colors.lighter,
-  },
-  engine: {
-    position: 'absolute',
-    right: 0,
-  },
-  body: {
-    backgroundColor: Colors.white,
-  },
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-    color: Colors.black,
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-    color: Colors.dark,
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-  footer: {
-    color: Colors.dark,
-    fontSize: 12,
-    fontWeight: '600',
-    padding: 4,
-    paddingRight: 12,
-    textAlign: 'right',
-  },
-});
+// Transactions Stack
+import TransactionsListScreen from './src/screens/Transactions/TransactionsListScreen';
 
-export default App;
+// Accounts stack
+import AccountsListScreen from './src/screens/Accounts/AccountsListScreen';
+
+// More
+import ProfileScreen from './src/screens/More/ProfileScreen';
+
+
+import {theme} from './styles';
+
+const store = configureStore();
+
+const TransactionsStack = createStackNavigator(
+  {
+    TransactionsListScreen,
+  },
+  {
+    initialRouteName: 'TransactionsListScreen',
+  },
+);
+
+const AccountsStack = createStackNavigator(
+  {
+    AccountsListScreen,
+  },
+  {
+    initialRouteName: 'AccountsListScreen',
+  },
+);
+
+
+const AppStack = createBottomTabNavigator(
+  {
+    TransactionsStack: {
+      screen: TransactionsStack,
+      navigationOptions: {
+        tabBarLabel: 'Transactions',
+        tabBarIcon: (
+          <Icon
+            name="format-list-bulleted"
+            type="material-community"
+            color="grey"
+          />
+        ), // Todo: add focused color
+      },
+    },
+
+    AccountsStack: {
+      screen: AccountsStack,
+      navigationOptions: {
+        tabBarLabel: 'Account',
+        tabBarIcon: (
+          <Icon name="credit-card" type="material-community" color="grey" />
+        ), // Todo: add focused color
+      },
+    },
+    ProfileScreen: {
+      screen: ProfileScreen,
+      navigationOptions: {
+        tabBarLabel: 'More',
+        tabBarIcon: (
+          <Icon name="dots-horizontal" type="material-community" color="grey" />
+        ), // Todo: add focused color
+      },
+    },
+  },
+  {
+    initialRouteName: 'TransactionsStack',
+    tabBarOptions: {
+      activeTintColor: 'grey',
+      labelStyle: {
+        fontSize: 12,
+      },
+      style: {
+        backgroundColor: 'white',
+      },
+    },
+  },
+);
+
+const AuthStack = createSwitchNavigator(
+  {
+    AuthSwitcherScreen,
+    LoginScreen,
+    SignUpScreen,
+    ErrorScreen,
+  },
+  {
+    initialRouteName: 'AuthSwitcherScreen',
+  },
+);
+
+
+const AppContainer = createAppContainer(
+  createSwitchNavigator(
+    {
+      AuthStack,
+      App: AppStack,
+    },
+    {
+      initialRouteName: 'AuthStack',
+    },
+  ),
+);
+
+export default class App extends React.Component {
+  render() {
+    return (
+      <Provider store={store}>
+        <ThemeProvider theme={theme}>
+          <AppContainer />
+        </ThemeProvider>
+      </Provider>
+    );
+  }
+}
