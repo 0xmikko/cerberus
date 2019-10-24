@@ -1,6 +1,5 @@
 package core
 
-
 type (
 	Confirmation struct {
 		ID                string `json:"id"`
@@ -10,11 +9,4 @@ type (
 		ConfirmationsSent int16  `json:"confirmations_sent"`
 		Active            bool   `json:"active"`
 	}
-)
-
-const (
-	Undefined = iota
-	PartiallyConfirmed
-	Cancelled
-	Confirmed
 )
