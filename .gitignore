@@ -4,3 +4,4 @@
 /server/config/dev_security.json
 /server/config/test_db.json
 /server/config/gcp.json
+/contract/build/

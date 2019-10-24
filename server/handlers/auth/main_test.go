@@ -49,7 +49,7 @@ func TestMain(m *testing.M) {
 	Services = services.InjectServices(*Store)
 
 	// Setup handlers
-	router = handlers.StartServer(*Services)
+	handlers.StartServer(*Services, "8080")
 
 	code := m.Run()
 	os.Exit(code)
