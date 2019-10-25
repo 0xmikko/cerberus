@@ -67,7 +67,13 @@ func StartServer(services services.Services, port string) {
 	users.RegisterController(apiRouter, services.UserService)
 
 	// Temporary added to serve landing page
-	router.Use(static.Serve("/", static.LocalFile("./landing", false)))
+
+	staticPath := "./landing"
+	if config.GetConfigType() == config.PROD {
+		staticPath = "/server/landing"
+	}
+
+	router.Use(static.Serve("/", static.LocalFile(staticPath, false)))
 
 	log.Println("Starting service at :" + port)
 	err := router.Run(":" + port)
