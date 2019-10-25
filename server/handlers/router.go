@@ -69,6 +69,7 @@ func StartServer(services services.Services, port string) {
 	// Temporary added to serve landing page
 	router.Use(static.Serve("/", static.LocalFile("./landing", false)))
 
+	log.Println("Starting service at :" + port)
 	err := router.Run(":" + port)
 	if err != nil {
 		log.Fatal(err)
