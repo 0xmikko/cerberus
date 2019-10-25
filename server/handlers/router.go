@@ -70,7 +70,7 @@ func StartServer(services services.Services, port string) {
 
 	staticPath := "./landing"
 	if config.GetConfigType() == config.PROD {
-		staticPath = "/server/landing"
+		staticPath = "/app/server/landing"
 	}
 
 	router.Use(static.Serve("/", static.LocalFile(staticPath, false)))
