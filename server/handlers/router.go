@@ -69,7 +69,7 @@ func StartServer(services services.Services, port string) {
 	users.RegisterController(apiRouter, services.UserService)
 
 	// Temporary added to serve landing page
-	router.Use(static.Serve("/", static.LocalFile("/var/www", false)))
+	router.Use(static.Serve("/", static.LocalFile("./landing", false)))
 	if config.GetConfigType() == config.PROD {
 		domain := os.Getenv("DOMAIN")
 		if domain == "" {

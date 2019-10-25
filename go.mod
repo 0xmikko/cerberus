@@ -42,6 +42,7 @@ require (
 	github.com/julienschmidt/httprouter v1.2.0
 	github.com/karalabe/usb v0.0.0-20190919080040-51dc0efba356
 	github.com/leodido/go-urn v1.2.0 // indirect
+	github.com/linkpoolio/bridges v0.0.0-20191025114008-0296eb6014df // indirect
 	github.com/mattn/go-colorable v0.1.4
 	github.com/mattn/go-isatty v0.0.10
 	github.com/mohae/deepcopy v0.0.0-20170929034955-c48cc78d4826
@@ -61,7 +62,6 @@ require (
 	github.com/steakknife/hamming v0.0.0-20180906055917-c99c65617cd3 // indirect
 	github.com/stretchr/testify v1.4.0
 	github.com/syndtr/goleveldb v1.0.0
-	github.com/tidwall/pretty v1.0.0 // indirect
 	github.com/tyler-smith/go-bip39 v1.0.2
 	github.com/wsddn/go-ecdh v0.0.0-20161211032359-48726bab9208
 	go.mongodb.org/mongo-driver v1.1.2
