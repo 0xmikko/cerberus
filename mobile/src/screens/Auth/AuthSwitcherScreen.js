@@ -29,7 +29,7 @@ const AuthSwitcherScreen = ({navigation, refreshToken, tokenStatus}) => {
         navigation.navigate('LoginScreen');
         return;
       case status.STATUS_SUCCESS:
-        navigation.navigate('OnboardingStack');
+        navigation.navigate('App');
         return;
     }
   }, [navigation, tokenStatus]);

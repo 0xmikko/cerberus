@@ -115,6 +115,7 @@ const styles = StyleSheet.create({
     paddingBottom: 30,
   },
   image: {
+    width: 100,
     height: 100,
     resizeMode: 'contain',
   },
