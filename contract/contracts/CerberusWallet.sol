@@ -10,15 +10,19 @@ import "openzeppelin-solidity/contracts/ownership/Ownable.sol";
  * local test networks
  */
 contract CerberusWallet is ChainlinkClient, Ownable {
-  uint256 public data;
-  uint256 oraclePayment;
   event NewPaymentRegistered(address to, int256 amount);
   event GetPermission(bytes32 id);
+  event Code(int256 code);
+
+  uint256 public data;
+  uint256 oraclePayment;
 
   struct PaymentRequest {
     address recipient;
     int256 amount;
   }
+
+
 
   /**
    * @notice Deploy the contract with a specified address for the LINK

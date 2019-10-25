@@ -20,10 +20,8 @@ import (
 	sentrygin "github.com/getsentry/sentry-go/gin"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-contrib/static"
-	"github.com/gin-gonic/autotls"
 	"github.com/gin-gonic/gin"
 	"log"
-	"os"
 	"time"
 )
 
@@ -70,40 +68,11 @@ func StartServer(services services.Services, port string) {
 
 	// Temporary added to serve landing page
 	router.Use(static.Serve("/", static.LocalFile("./landing", false)))
-	if config.GetConfigType() == config.PROD {
-		domain := os.Getenv("DOMAIN")
-		if domain == "" {
-			log.Fatal("Cant find DOMAIN information for generating TlS certificate")
-			return
-		}
-		log.Println("Try to get certificate for ", domain)
-		log.Fatal(autotls.Run(router, domain))
 
-	} else {
-		err := router.Run(":" + port)
-		if err != nil {
-			log.Fatal(err)
-			return
-		}
+	err := router.Run(":" + port)
+	if err != nil {
+		log.Fatal(err)
+		return
 	}
-	//
-	//	//certFile := os.Getenv("CERTFILE")
-	//	//keyFile := os.Getenv("KEYFILE")
-	//	//
-	//	//if keyFile == "" || certFile == "" {
-	//	//	log.Fatal("Please provide KEYFILE & CERTFILE enviroment")
-	//	//}
-	//	//
-	//	//log.Printf("CERTFILE %s\nKEYFILE %s", certFile, keyFile)
-	//	//
-	//	//err := router.RunTLS(":"+port, certFile, keyFile)
-	//	//if err != nil {
-	//	//	log.Fatal(err)
-	//	//	return
-	//	//}
-	//
-	//} else {
-	//
-	//}
 
 }
