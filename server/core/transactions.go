@@ -11,11 +11,12 @@ const (
 
 type (
 	Transaction struct {
-		ID                ID    `json:"id"`
-		UserID            ID    `json:"user_id"`
-		State             int   `json:"state"`
-		ConfirmationsSent int16 `json:"confirmations_sent"`
-		Active            bool  `json:"active"`
+		ID     ID   `json:"id"`
+		From   ID   `json:"from"`
+		To     ID   `json:"to"`
+		Amount int  `json:"amount"`
+		State  int  `json:"state"`
+		Active bool `json:"active"`
 	}
 
 	TransactionsStore interface {
