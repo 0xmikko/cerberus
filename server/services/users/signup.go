@@ -44,5 +44,51 @@ func (s service) SignUp(ctx context.Context, userDTO *core.SignUpDTO) (*core.Use
 		return nil, err
 	}
 
+	acc, err := s.accountService.Create(ctx, newID, "0xTESTTESTTESTTESTTESTTESTTESTTESTTESTTEST12")
+	if err != nil {
+		return nil, errors.ErrorCantCreateAccounts
+	}
+
+	transactions := []*core.Transaction{
+		&core.Transaction{
+			ID:        "242313123412414_1234_124",
+			Owner:     newID,
+			AccountID: acc,
+			To:        "0x123456789012345678901234567890123456789012",
+			Amount:    50000000000000,
+			Deadline:  time.Now().Add(time.Hour),
+			State:     core.Undefined,
+			Active:    true,
+		},
+		&core.Transaction{
+			ID:        "242313123412414_1234_124",
+			Owner:     newID,
+			AccountID: acc,
+			To:        "0x123456789012345678901234567890123456789012",
+			Amount:    60000000000000,
+			Deadline:  time.Now().Add(15 * time.Minute),
+			State:     core.Cancelled,
+			Active:    true,
+		},
+		&core.Transaction{
+			ID:        "242313123412414_1234_124",
+			Owner:     newID,
+			AccountID: acc,
+			To:        "0x123456789012345678901234567890123456789012",
+			Amount:    60000000000000,
+			Deadline:  time.Now().Add(15*time.Minute),
+			State:     core.Confirmed,
+			Active:    true,
+		},
+	}
+	for _, t := range transactions {
+
+		err = s.transactionsService.Create(ctx, t)
+		if err != nil {
+			return nil, errors.ErrorCantCreateAccounts
+		}
+	}
+
+
 	return s.store.FindByID(newID)
 }

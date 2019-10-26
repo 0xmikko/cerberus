@@ -10,24 +10,32 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import {connect} from 'react-redux';
-import {StyleSheet, Text, ScrollView, View, Dimensions} from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  ScrollView,
+  View,
+  Dimensions,
+  SafeAreaView,
+} from 'react-native';
 import * as actions from '../../store/actions';
 import * as reducers from '../../store/reducers';
 
 const AccountsListScreen = ({navigation}) => {
   return (
-    <ScrollView style={styles.scrollContainer}>
-      <View
-        style={{
-          flex: 1,
-          borderRadius: 10,
-          backgroundColor: '#F6F7F8',
-          height: Dimensions.get('window').height,
-          marginTop: -10,
-        }}>
-        <Text>Accounts</Text>
-      </View>
-    </ScrollView>
+    <SafeAreaView>
+      <ScrollView style={styles.scrollContainer}>
+        <View
+          style={{
+            flex: 1,
+            borderRadius: 10,
+            backgroundColor: '#F6F7F8',
+            height: Dimensions.get('window').height,
+          }}>
+          <Text>Accounts</Text>
+        </View>
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 
@@ -49,6 +57,7 @@ const styles = StyleSheet.create({
   },
   scrollContainer: {
     width: '100%',
+
   },
 });
 

@@ -6,11 +6,12 @@ type (
 	Account struct {
 		ID      ID     `json:"id"`
 		Address string `json:"address"`
+		Owner   ID     `json:"owner"`
 	}
 
 	AccountsStore interface {
 		// Stores account obj and return account ID
-		Insert(ctx context.Context, account *Account) (accounntID ID, err error)
+		Insert(ctx context.Context, account *Account) (accountID ID, err error)
 
 		// List returns Accounts for particular user from database
 		ListByUser(ctx context.Context, userID ID) (result []*Account, err error)
@@ -19,6 +20,7 @@ type (
 	}
 
 	AccountsService interface {
+		Create(ctx context.Context, userID ID, account string) (ID, error)
 		Retrieve(ctx context.Context, userID, accountID ID) (*Account, error)
 		ListByUser(ctx context.Context, userID ID) (result []*Account, err error)
 	}

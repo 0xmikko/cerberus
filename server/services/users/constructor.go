@@ -14,10 +14,17 @@ import (
 
 type service struct {
 	store core.UserStore
+	accountService core.AccountsService
+	transactionsService core.TransactionsService
 }
 
-func New(UserStore core.UserStore) core.UserService {
+func New(UserStore core.UserStore, as core.AccountsService, ts core.TransactionsService) core.UserService {
 
-	cs := &service{UserStore}
+	cs := &service{
+		store: UserStore,
+		accountService: as,
+		transactionsService: ts,
+		}
+
 	return cs
 }

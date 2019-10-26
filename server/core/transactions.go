@@ -1,6 +1,9 @@
 package core
 
-import "context"
+import (
+	"context"
+	"time"
+)
 
 const (
 	Undefined = iota
@@ -11,12 +14,14 @@ const (
 
 type (
 	Transaction struct {
-		ID     ID   `json:"id"`
-		From   ID   `json:"from"`
-		To     ID   `json:"to"`
-		Amount int  `json:"amount"`
-		State  int  `json:"state"`
-		Active bool `json:"active"`
+		ID        ID        `json:"id"`
+		Owner     ID        `json:"owner"`
+		AccountID ID        `json:"from"`
+		To        ID        `json:"to"`
+		Amount    int       `json:"amount"`
+		Deadline  time.Time `json:"deadline"`
+		State     int       `json:"state"`
+		Active    bool      `json:"active"`
 	}
 
 	TransactionsStore interface {
@@ -32,6 +37,9 @@ type (
 	}
 
 	TransactionsService interface {
+
+		Create(ctx context.Context, newTransaction *Transaction) error
+
 		Retrieve(ctx context.Context, transactionID ID, userID ID) (*Transaction, error)
 
 		List(ctx context.Context, userID ID) ([]*Transaction, error)

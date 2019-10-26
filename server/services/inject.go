@@ -23,9 +23,13 @@ type Services struct {
 }
 
 func InjectServices(Store store.GlobalStore) *Services {
+
+	accountsService := accounts.New(Store.AccountStore)
+	transactionsService := transactions.New(Store.TransactionsStore)
+
 	return &Services{
-		transactions.New(Store.TransactionsStore),
-		accounts.New(Store.AccountStore),
-		users.New(Store.UserStore),
+		AccountsService: accountsService,
+		TransactionsService: transactionsService,
+		UserService: users.New(Store.UserStore, accountsService, transactionsService),
 	}
 }

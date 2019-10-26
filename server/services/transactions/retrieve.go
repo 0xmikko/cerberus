@@ -21,7 +21,7 @@ func (s *service) Retrieve(ctx context.Context, transactionID core.ID, userID co
 		return nil, err
 	}
 
-	if transaction.UserID != userID {
+	if transaction.Owner != userID {
 		return nil, errors.New("You have no rights")
 	}
 

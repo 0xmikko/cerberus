@@ -8,12 +8,9 @@
 
 import React from 'react';
 import {Provider} from 'react-redux';
-import {
-  createStackNavigator,
-  createAppContainer,
-  createSwitchNavigator,
-  createBottomTabNavigator,
-} from 'react-navigation';
+import {createAppContainer, createSwitchNavigator} from 'react-navigation';
+import {createStackNavigator} from 'react-navigation-stack';
+import {createBottomTabNavigator} from 'react-navigation-tabs';
 import {Icon} from 'react-native-elements';
 import {ThemeProvider} from 'react-native-elements';
 
@@ -33,8 +30,6 @@ import AccountsListScreen from './src/screens/Accounts/AccountsListScreen';
 
 // More
 import ProfileScreen from './src/screens/More/ProfileScreen';
-
-
 import {theme} from './styles';
 
 const store = configureStore();
@@ -56,7 +51,6 @@ const AccountsStack = createStackNavigator(
     initialRouteName: 'AccountsListScreen',
   },
 );
-
 
 const AppStack = createBottomTabNavigator(
   {
@@ -118,7 +112,6 @@ const AuthStack = createSwitchNavigator(
     initialRouteName: 'AuthSwitcherScreen',
   },
 );
-
 
 const AppContainer = createAppContainer(
   createSwitchNavigator(
