@@ -24,6 +24,7 @@ import ErrorScreen from './src/screens/Auth/ErrorScreen';
 
 // Transactions Stack
 import TransactionsListScreen from './src/screens/Transactions/TransactionsListScreen';
+import TransactionDetailsScreen from './src/screens/Transactions/TransactionDetailsScreen';
 
 // Accounts stack
 import AccountsListScreen from './src/screens/Accounts/AccountsListScreen';
@@ -37,6 +38,7 @@ const store = configureStore();
 const TransactionsStack = createStackNavigator(
   {
     TransactionsListScreen,
+    TransactionDetailsScreen,
   },
   {
     initialRouteName: 'TransactionsListScreen',

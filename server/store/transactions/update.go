@@ -12,15 +12,21 @@ package transactions
 import (
 	"context"
 	"github.com/MikaelLazarev/cerberus/server/core"
-	"github.com/MikaelLazarev/cerberus/server/store/helpers"
-	"github.com/google/uuid"
+	"go.mongodb.org/mongo-driver/bson"
 )
 
-func (s *store) Update(ctx context.Context, transaction *core.Transaction) error {
-	transaction.ID = core.ID(uuid.New().String())
+func (s *store) Update(ctx context.Context, transaction *core.TransactionItem) error {
+	filter := bson.D{{
+		"id",
+		bson.D{{
+			"$eq",
+			transaction.ID,
+		}},
+	}}
 
-	result, err := s.Col.InsertOne(context.Background(), transaction)
-	_, err = helpers.ConvertOIDToString(result.InsertedID)
-
+	update := bson.D{{
+		"$set", transaction,
+	}}
+	_, err := s.Col.UpdateOne(context.Background(), filter, update)
 	return err
 }

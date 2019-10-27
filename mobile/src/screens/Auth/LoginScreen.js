@@ -57,7 +57,7 @@ const LoginScreen = ({
       setAuthErrorDisplay(authError);
     }
     if (isAuthenticated) {
-      navigation.navigate('OnboardingStack');
+      navigation.navigate('App');
     }
   }, [authError, authStatus, isAuthenticated, navigation]);
 

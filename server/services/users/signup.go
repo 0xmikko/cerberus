@@ -49,8 +49,8 @@ func (s service) SignUp(ctx context.Context, userDTO *core.SignUpDTO) (*core.Use
 		return nil, errors.ErrorCantCreateAccounts
 	}
 
-	transactions := []*core.Transaction{
-		&core.Transaction{
+	transactions := []*core.TransactionItem{
+		&core.TransactionItem{
 			ID:        "242313123412414_1234_124",
 			Owner:     newID,
 			AccountID: acc,
@@ -60,7 +60,7 @@ func (s service) SignUp(ctx context.Context, userDTO *core.SignUpDTO) (*core.Use
 			State:     core.Undefined,
 			Active:    true,
 		},
-		&core.Transaction{
+		&core.TransactionItem{
 			ID:        "242313123412414_1234_124",
 			Owner:     newID,
 			AccountID: acc,
@@ -70,13 +70,13 @@ func (s service) SignUp(ctx context.Context, userDTO *core.SignUpDTO) (*core.Use
 			State:     core.Cancelled,
 			Active:    true,
 		},
-		&core.Transaction{
+		&core.TransactionItem{
 			ID:        "242313123412414_1234_124",
 			Owner:     newID,
 			AccountID: acc,
 			To:        "0x123456789012345678901234567890123456789012",
 			Amount:    60000000000000,
-			Deadline:  time.Now().Add(15*time.Minute),
+			Deadline:  time.Now().Add(15 * time.Minute),
 			State:     core.Confirmed,
 			Active:    true,
 		},
@@ -88,7 +88,6 @@ func (s service) SignUp(ctx context.Context, userDTO *core.SignUpDTO) (*core.Use
 			return nil, errors.ErrorCantCreateAccounts
 		}
 	}
-
 
 	return s.store.FindByID(newID)
 }

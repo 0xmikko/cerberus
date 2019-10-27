@@ -8,26 +8,61 @@
  */
 
 /* eslint-disable react-native/no-inline-styles */
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {connect} from 'react-redux';
-import {StyleSheet, Text, ScrollView, View, Dimensions} from 'react-native';
+import {
+  StyleSheet,
+  ScrollView,
+  View,
+  Dimensions,
+  SafeAreaView,
+} from 'react-native';
+import {Text} from 'react-native-elements';
+import TransactionList from '../../containers/Transactions/TransactionList';
+import {isDataLoaded} from '../../components/isDataLoaded';
 import * as actions from '../../store/actions';
 import * as reducers from '../../store/reducers';
 
-const TransactionsListScreen = ({navigation}) => {
+const TransactionsListScreen = ({
+  transactions,
+  getTransactionsList,
+  navigation,
+}) => {
+  useEffect(() => {
+    getTransactionsList();
+    return () => {};
+  }, [getTransactionsList]);
+
+  let notReadyStatus = isDataLoaded(transactions);
+  if (notReadyStatus) {
+    return notReadyStatus;
+  }
+  const {data} = transactions;
+
+  if (!data) {
+    return <View />;
+  }
+
+  const onSelect = id => {
+    console.log(id);
+    navigation.push('TransactionDetailsScreen', {id});
+  };
+
   return (
-    <ScrollView style={styles.scrollContainer}>
-      <View
-        style={{
-          flex: 1,
-          borderRadius: 10,
-          backgroundColor: '#F6F7F8',
-          height: Dimensions.get('window').height,
-          marginTop: -10,
-        }}>
-        <Text>Accounts</Text>
-      </View>
-    </ScrollView>
+    <SafeAreaView>
+      <ScrollView style={styles.scrollContainer}>
+        <View
+          style={{
+            flex: 1,
+            borderRadius: 10,
+            backgroundColor: '#F6F7F8',
+            height: Dimensions.get('window').height,
+          }}>
+          <Text h1>Transactions</Text>
+          <TransactionList data={data} onSelect={onSelect} />
+        </View>
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 
@@ -58,11 +93,11 @@ TransactionsListScreen.navigationOptions = ({navigation}) => ({
 });
 
 const mapStateToProps = state => ({
-  accounts: reducers.accountsList(state),
+  transactions: reducers.transactionsList(state),
 });
 
 const mapDispatchToProps = dispatch => ({
-  getAccountsList: () => dispatch(actions.getAccountsList()),
+  getTransactionsList: () => dispatch(actions.getTransactionsList()),
 });
 
 export default connect(

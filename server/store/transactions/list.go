@@ -16,15 +16,15 @@ import (
 )
 
 // Get teasers of all actual stories
-func (s *store) ListByUser(ctx context.Context, userID core.ID) (result []*core.Transaction, err error) {
+func (s *store) ListByUser(ctx context.Context, userID core.ID) (result []*core.TransactionItem, err error) {
 
-	results := make([]*core.Transaction, 0)
+	results := make([]*core.TransactionItem, 0)
 
 	filter := bson.D{{
-		"actual",
+		"owner",
 		bson.D{{
 			"$eq",
-			true,
+			userID,
 		}},
 	}}
 
@@ -37,7 +37,7 @@ func (s *store) ListByUser(ctx context.Context, userID core.ID) (result []*core.
 	for cur.Next(context.TODO()) {
 
 		// create a value into which the single document can be decoded
-		var elem core.Transaction
+		var elem core.TransactionItem
 		err := cur.Decode(&elem)
 		if err != nil {
 			return nil, err

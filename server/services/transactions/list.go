@@ -14,7 +14,7 @@ import (
 	"github.com/MikaelLazarev/cerberus/server/core"
 )
 
-func (s *service) List(ctx context.Context, userID core.ID) ([]*core.Transaction, error) {
+func (s *service) List(ctx context.Context, userID core.ID) ([]*core.TransactionItem, error) {
 
 	transactions, err := s.store.ListByUser(ctx, userID)
 	if err != nil {

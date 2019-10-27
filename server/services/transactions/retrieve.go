@@ -14,7 +14,7 @@ import (
 	"github.com/MikaelLazarev/cerberus/server/core"
 )
 
-func (s *service) Retrieve(ctx context.Context, transactionID core.ID, userID core.ID) (*core.Transaction, error) {
+func (s *service) Retrieve(ctx context.Context, transactionID core.ID, userID core.ID) (*core.TransactionItem, error) {
 
 	transaction, err := s.store.FindByID(ctx, transactionID)
 	if err != nil {

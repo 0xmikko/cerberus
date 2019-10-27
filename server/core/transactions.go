@@ -7,13 +7,12 @@ import (
 
 const (
 	Undefined = iota
-	PartiallyConfirmed
 	Cancelled
 	Confirmed
 )
 
 type (
-	Transaction struct {
+	TransactionItem struct {
 		ID        ID        `json:"id"`
 		Owner     ID        `json:"owner"`
 		AccountID ID        `json:"from"`
@@ -26,22 +25,23 @@ type (
 
 	TransactionsStore interface {
 		// Stores transaction obj and return transaction ID
-		Insert(ctx context.Context, transaction *Transaction) (transactionID ID, err error)
+		Insert(ctx context.Context, transaction *TransactionItem) (transactionID ID, err error)
 
 		// List returns Transactions for particular user from database
-		ListByUser(ctx context.Context, userID ID) (result []*Transaction, err error)
+		ListByUser(ctx context.Context, userID ID) (result []*TransactionItem, err error)
 
-		FindByID(ctx context.Context, transactionID ID) (*Transaction, error)
+		FindByID(ctx context.Context, transactionID ID) (*TransactionItem, error)
 
-		Update(ctx context.Context, transaction *Transaction) error
+		Update(ctx context.Context, transaction *TransactionItem) error
 	}
 
 	TransactionsService interface {
+		Create(ctx context.Context, newTransaction *TransactionItem) error
 
-		Create(ctx context.Context, newTransaction *Transaction) error
+		Confirm(ctx context.Context, transactionID, userID ID, status bool) error
 
-		Retrieve(ctx context.Context, transactionID ID, userID ID) (*Transaction, error)
+		Retrieve(ctx context.Context, transactionID ID, userID ID) (*TransactionItem, error)
 
-		List(ctx context.Context, userID ID) ([]*Transaction, error)
+		List(ctx context.Context, userID ID) ([]*TransactionItem, error)
 	}
 )

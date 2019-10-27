@@ -16,8 +16,8 @@ import (
 )
 
 // FindByIDWithMembers - finds transaction by its ID
-func (s *store) FindByID(ctx context.Context, transactionID core.ID) (*core.Transaction, error) {
-	var foundTransaction core.Transaction
+func (s *store) FindByID(ctx context.Context, transactionID core.ID) (*core.TransactionItem, error) {
+	var foundTransaction core.TransactionItem
 
 	// Creating filter which find / create an item with the same meeting.ID
 	filter := bson.D{{
