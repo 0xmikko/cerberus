@@ -19,6 +19,7 @@ import {
 } from 'react-native';
 import {Button} from 'react-native-elements';
 import {Text} from 'react-native-elements';
+import TemplateScreen from '../../components/templateScreen';
 import TransactionList from '../../containers/Transactions/TransactionList';
 import {isDataLoaded} from '../../components/isDataLoaded';
 import * as actions from '../../store/actions';
@@ -53,16 +54,8 @@ const TransactionDetailsScreen = ({
   console.log('TRANS DATA', data);
 
   return (
-    <SafeAreaView style={styles.container}>
-      <View
-        style={{
-          width: '100%',
-          borderRadius: 10,
-          backgroundColor: '#F6F7F8',
-        }}>
-        <Text>Transaction</Text>
-        <Text>To: {data.to}</Text>
-      </View>
+    <TemplateScreen title={'Confirmation'}>
+      <Text>To: {data.to}</Text>
       <View
         style={{
           width: '100%',
@@ -93,7 +86,7 @@ const TransactionDetailsScreen = ({
           onPress={() => onConfirm(false)}
         />
       </View>
-    </SafeAreaView>
+    </TemplateScreen>
   );
 };
 

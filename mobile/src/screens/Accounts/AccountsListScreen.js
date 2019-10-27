@@ -20,22 +20,13 @@ import {
 } from 'react-native';
 import * as actions from '../../store/actions';
 import * as reducers from '../../store/reducers';
+import TemplateScreen from '../../components/templateScreen';
 
 const AccountsListScreen = ({navigation}) => {
   return (
-    <SafeAreaView>
-      <ScrollView style={styles.scrollContainer}>
-        <View
-          style={{
-            flex: 1,
-            borderRadius: 10,
-            backgroundColor: '#F6F7F8',
-            height: Dimensions.get('window').height,
-          }}>
-          <Text>Accounts</Text>
-        </View>
-      </ScrollView>
-    </SafeAreaView>
+    <TemplateScreen title={'Accounts'}>
+      <Text>Accounts here</Text>
+    </TemplateScreen>
   );
 };
 
@@ -57,7 +48,6 @@ const styles = StyleSheet.create({
   },
   scrollContainer: {
     width: '100%',
-
   },
 });
 

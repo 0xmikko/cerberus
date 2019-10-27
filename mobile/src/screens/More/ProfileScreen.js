@@ -13,21 +13,13 @@ import {connect} from 'react-redux';
 import {StyleSheet, Text, ScrollView, View, Dimensions} from 'react-native';
 import * as actions from '../../store/actions';
 import * as reducers from '../../store/reducers';
+import TemplateScreen from '../../components/templateScreen';
 
 const ProfileScreen = ({navigation}) => {
   return (
-    <ScrollView style={styles.scrollContainer}>
-      <View
-        style={{
-          flex: 1,
-          borderRadius: 10,
-          backgroundColor: '#F6F7F8',
-          height: Dimensions.get('window').height,
-          marginTop: -10,
-        }}>
-        <Text>More</Text>
-      </View>
-    </ScrollView>
+    <TemplateScreen title={'More'}>
+      <Text>Profile Here</Text>
+    </TemplateScreen>
   );
 };
 

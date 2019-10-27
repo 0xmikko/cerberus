@@ -18,6 +18,7 @@ import {
   SafeAreaView,
 } from 'react-native';
 import {Text} from 'react-native-elements';
+import TemplateScreen from '../../components/templateScreen';
 import TransactionList from '../../containers/Transactions/TransactionList';
 import {isDataLoaded} from '../../components/isDataLoaded';
 import * as actions from '../../store/actions';
@@ -49,20 +50,17 @@ const TransactionsListScreen = ({
   };
 
   return (
-    <SafeAreaView>
-      <ScrollView style={styles.scrollContainer}>
-        <View
-          style={{
-            flex: 1,
-            borderRadius: 10,
-            backgroundColor: '#F6F7F8',
-            height: Dimensions.get('window').height,
-          }}>
-          <Text h1>Transactions</Text>
-          <TransactionList data={data} onSelect={onSelect} />
-        </View>
-      </ScrollView>
-    </SafeAreaView>
+    <TemplateScreen title={'Transactions'}>
+      <View
+        style={{
+          flex: 1,
+          borderRadius: 10,
+          backgroundColor: '#F6F7F8',
+          height: Dimensions.get('window').height,
+        }}>
+        <TransactionList data={data} onSelect={onSelect} />
+      </View>
+    </TemplateScreen>
   );
 };
 
