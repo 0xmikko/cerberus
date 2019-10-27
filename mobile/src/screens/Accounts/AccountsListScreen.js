@@ -13,10 +13,8 @@ import {connect} from 'react-redux';
 import {
   StyleSheet,
   Text,
-  ScrollView,
-  View,
+    Button,
   Dimensions,
-  SafeAreaView,
 } from 'react-native';
 import * as actions from '../../store/actions';
 import * as reducers from '../../store/reducers';

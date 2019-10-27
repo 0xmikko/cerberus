@@ -54,6 +54,18 @@ const AccountsStack = createStackNavigator(
   },
 );
 
+const MoreStack = createStackNavigator(
+  {
+    ProfileScreen: {
+      screen: ProfileScreen,
+      title: 'Profile',
+    },
+  },
+  {
+    initialRouteName: 'ProfileScreen',
+  },
+);
+
 const AppStack = createBottomTabNavigator(
   {
     TransactionsStack: {
@@ -79,8 +91,8 @@ const AppStack = createBottomTabNavigator(
         ), // Todo: add focused color
       },
     },
-    ProfileScreen: {
-      screen: ProfileScreen,
+    MoreStack: {
+      screen: MoreStack,
       navigationOptions: {
         tabBarLabel: 'More',
         tabBarIcon: (

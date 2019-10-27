@@ -8,14 +8,24 @@
  */
 
 /* eslint-disable react-native/no-inline-styles */
-import React from 'react';
+import React, {useEffect} from 'react';
 import {connect} from 'react-redux';
-import {StyleSheet, Text, ScrollView, View, Dimensions} from 'react-native';
+import {StyleSheet, Text, Button, Dimensions} from 'react-native';
 import * as actions from '../../store/actions';
 import * as reducers from '../../store/reducers';
 import TemplateScreen from '../../components/templateScreen';
 
-const ProfileScreen = ({navigation}) => {
+const ProfileScreen = ({navigation, logout, refreshToken}) => {
+  useEffect(() => {
+    navigation.setParams({logout});
+  }, [logout]);
+
+  useEffect(() => {
+    if (!refreshToken) {
+      navigation.navigate('AuthStack');
+    }
+  }, [refreshToken]);
+
   return (
     <TemplateScreen title={'More'}>
       <Text>Profile Here</Text>
@@ -44,17 +54,18 @@ const styles = StyleSheet.create({
   },
 });
 
-// Navifation options
 ProfileScreen.navigationOptions = ({navigation}) => ({
-  header: null,
+  headerRight: () => (
+    <Button title={'Logout'} onPress={navigation.getParam('logout')} />
+  ),
 });
 
 const mapStateToProps = state => ({
-  accounts: reducers.accountsList(state),
+  refreshToken: reducers.refreshToken(state),
 });
 
 const mapDispatchToProps = dispatch => ({
-  getAccountsList: () => dispatch(actions.getAccountsList()),
+  logout: () => dispatch(actions.logout()),
 });
 
 export default connect(
