@@ -18,20 +18,19 @@ import (
 
 func AdapterHandler(c *gin.Context) {
 
-	userID := c.MustGet("userId").(core.ID)
 	transactionID, ok := c.Params.Get("id")
 	if !ok {
 		c.AbortWithStatusJSON(http.StatusBadRequest, gin.H{"message": "Wrong parameter"})
 		return
 	}
-	fmt.Println("Adapter confirmation Request for ", userID)
+	fmt.Println("Adapter confirmation Request for ", transactionID)
 
-	transactionDetails, err := transactionsService.Retrieve(context.TODO(), core.ID(transactionID), userID)
+	confirmation, err := transactionsService.GetState(context.TODO(), core.ID(transactionID))
 	if err != nil {
 		c.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
 	}
 
-	c.JSON(http.StatusOK, gin.H{"confirmation": transactionDetails.State})
+	c.JSON(http.StatusOK, gin.H{"confirmation": confirmation})
 
 }

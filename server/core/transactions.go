@@ -42,6 +42,8 @@ type (
 
 		Retrieve(ctx context.Context, transactionID ID, userID ID) (*TransactionItem, error)
 
+		GetState(ctx context.Context, transactionID ID) (bool, error)
+
 		List(ctx context.Context, userID ID) ([]*TransactionItem, error)
 	}
 )
