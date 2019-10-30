@@ -57,7 +57,7 @@ func getAPNConfigFromJSON(fname string) (*APNConfig, error) {
 func getAPNProdConfig() (*APNConfig, error) {
 
 	log.Println("APN Prod configuration...")
-	authKey, err := token.AuthKeyFromBytes([]byte("APN_AUTHKEY"))
+	authKey, err := token.AuthKeyFromBytes([]byte(os.Getenv("APN_AUTHKEY")))
 	if err != nil {
 		log.Fatal("token error:", err)
 	}
