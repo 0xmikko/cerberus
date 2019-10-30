@@ -25,3 +25,8 @@ func RegisterController(r gin.IRouter, rs core.TransactionsService) {
 	c.PUT("/:id/confirm/", ConfirmHandler)
 
 }
+
+func AdapterController(r gin.IRouter) {
+	c := r.Group("/transactions")
+	c.GET("/:id/", AdapterHandler)
+}

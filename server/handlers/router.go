@@ -66,6 +66,10 @@ func StartServer(services services.Services, port string) {
 	transactions.RegisterController(apiRouter, services.TransactionsService)
 	users.RegisterController(apiRouter, services.UserService, services.NotificationService)
 
+	// External adapter check
+	adapter := router.Group("/adapter")
+	transactions.AdapterController(adapter)
+
 	// Temporary added to serve landing page
 
 	staticPath := "./landing"

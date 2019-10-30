@@ -1,23 +1,26 @@
 package main
 
 import (
+	"fmt"
 	"github.com/linkpoolio/bridges"
 	"net/http"
 )
 
-// Cerberus is the most basic Bridge implementation, as it only calls the api:
-// https://min-ap.cryptocompare.com/data/price?fsym=ETH&tsyms=USD,JPY,EUR
 type Cerberus struct{}
 
-// Run is the bridge.Bridge Run implementation that returns the price response
+// Run is the bridge.Bridge Run implementation that returns the confirmation response
 func (cc *Cerberus) Run(h *bridges.Helper) (interface{}, error) {
 	r := make(map[string]interface{})
+
+	id := h.Data.Get("id").String()
+	requestURL := fmt.Sprintf("https:/cerberus.ledger-labs.com/api/transactions/%s/check/", id)
+
 	err := h.HTTPCall(
 		http.MethodGet,
-		"https:/cerberus.ledger-labs.com/api/transaction/",
+		requestURL,
 		&r,
 	)
-	return r, err
+	return r["confirmation"], err
 }
 
 // Opts is the bridge.Bridge implementation

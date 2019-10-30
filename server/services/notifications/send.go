@@ -2,10 +2,8 @@ package notifications
 
 import (
 	"context"
-	"encoding/json"
 	"fmt"
 	"github.com/MikaelLazarev/cerberus/server/core"
-	"github.com/gin-gonic/gin"
 	"github.com/sideshow/apns2"
 	"github.com/sideshow/apns2/payload"
 	"log"
@@ -19,7 +17,6 @@ func (s *service) SendCode(ctx context.Context, userID core.ID, message string) 
 	if err != nil {
 		return err
 	}
-
 
 	for token, _ := range notificationToken.IOSTokens {
 
