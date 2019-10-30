@@ -33,7 +33,7 @@ func GetAPNConfig() (*APNConfig, error) {
 		return getAPNProdConfig()
 
 	}
-	return nil, errors.New("Wrong databse configuration type providedd")
+	return nil, errors.New("Wrong configuration type providedd")
 }
 
 func getAPNConfigFromJSON(fname string) (*APNConfig, error) {
@@ -56,6 +56,7 @@ func getAPNConfigFromJSON(fname string) (*APNConfig, error) {
 
 func getAPNProdConfig() (*APNConfig, error) {
 
+	log.Println("APN Prod configuration...")
 	authKey, err := token.AuthKeyFromBytes([]byte("APN_AUTHKEY"))
 	if err != nil {
 		log.Fatal("token error:", err)
