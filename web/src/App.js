@@ -27,20 +27,22 @@ function App() {
     const deploySmartContract = () => {
 
         const contract = new web3.eth.Contract(CerberusWalletContract.abi);
-        contract.deploy({
+        const p = contract.deploy({
             data: CerberusWalletContract.bytecode,
             arguments: [
                 "0x20fE562d797A42Dcb3399062AE9546cd06f63280",
                 "0xc99B3D447826532722E41bc36e644ba3479E4365",
-                "2ebb1c1a4b1e4229adac24ee0b5f784f",
-                "100000000000000000",
+                web3.utils.fromAscii("2ebb1c1a4b1e4229adac24ee0b5f784f"),
+                web3.utils.fromAscii("100000000000000000"),
                 "0x83F00b902cbf06E316C95F51cbEeD9D2572a349a",
-                "d4b02e3a2c354111911739c5dd3264a9",
-                "100000000000000000"
+                web3.utils.fromAscii("d4b02e3a2c354111911739c5dd3264a9"),
+                web3.utils.fromAscii("100000000000000000")
             ],
-        }).send({
+        })
+        p.estimateGas().then(e => console.log(e))
+        p.send({
             from: account[0],
-            gas: 250000,
+            gas: 2500000,
             gasPrice: gasPrice*2,
         }, function(error, transactionHash){
             console.log(transactionHash)
