@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"github.com/linkpoolio/bridges"
 	"github.com/stretchr/testify/assert"
 	"testing"
@@ -16,13 +17,14 @@ func TestCerberus_Run(t *testing.T) {
 	h := bridges.NewHelper(json)
 	val, err := wa.Run(h)
 
-	avg, ok := val.(bool)
+	fmt.Println(err)
+	confirmation, ok := val.(bool)
 	assert.True(t, ok)
-	assert.True(t, avg == true)
+	assert.True(t, confirmation == true)
 	assert.Nil(t, err)
 }
 
-func TestGasStation_Opts(t *testing.T) {
+func TestCerberus_Opts(t *testing.T) {
 	cc := Cerberus{}
 	opts := cc.Opts()
 	assert.Equal(t, opts.Name, "Cerberus")

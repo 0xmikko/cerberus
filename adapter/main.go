@@ -13,7 +13,7 @@ func (cc *Cerberus) Run(h *bridges.Helper) (interface{}, error) {
 	r := make(map[string]interface{})
 
 	id := h.Data.Get("id").String()
-	requestURL := fmt.Sprintf("https:/cerberus.ledger-labs.com/adapter/transactions/%s/", id)
+	requestURL := fmt.Sprintf("https://cerberus.ledger-labs.com/adapter/transactions/%s/", id)
 
 	err := h.HTTPCall(
 		http.MethodGet,
