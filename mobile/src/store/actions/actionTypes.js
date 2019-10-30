@@ -43,3 +43,4 @@ export const ACCOUNTS_PREFIX  = '@@ACCOUNTS/';
 
 // USER
 export const PROFILE_PREFIX = '@@USER/';
+export const PROFILE_PREFIX_SAVE_TOKEN = '@@USER/SAVE_TOKEN';

@@ -2,12 +2,14 @@ import {combineReducers} from 'redux';
 import * as actionTypes from '../actions/actionTypes';
 import {createDataLoader} from './dataloader';
 import auth, * as fromAuth from './auth';
+import profileToken, * as fromProfileToken from './profile';
 
 const rootReducer = combineReducers({
   auth,
   transactions: createDataLoader(actionTypes.TRANSACTIONS_PREFIX),
   accounts: createDataLoader(actionTypes.ACCOUNTS_PREFIX),
   user: createDataLoader(actionTypes.PROFILE_PREFIX),
+  profileToken,
 });
 
 // Authentication
@@ -28,6 +30,9 @@ export function withAuth(headers = {}) {
     Authorization: `Bearer ${accessToken(state)}`,
   });
 }
+
+// APN Token
+export const apnToken = state => fromProfileToken.apnToken(state.profileToken);
 
 // Transactions
 export const transactionsList = state => state.transactions.List;

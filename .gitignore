@@ -5,3 +5,5 @@
 /server/config/test_db.json
 /server/config/gcp.json
 /contract/build/
+/server/config/*.p8
+/server/config/dev_apn.json

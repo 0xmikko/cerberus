@@ -15,7 +15,13 @@ import * as actions from '../../store/actions';
 import * as reducers from '../../store/reducers';
 import TemplateScreen from '../../components/templateScreen';
 
-const ProfileScreen = ({navigation, logout, refreshToken}) => {
+const ProfileScreen = ({
+  navigation,
+  logout,
+  refreshToken,
+  apnToken,
+  registerToken,
+}) => {
   useEffect(() => {
     navigation.setParams({logout});
   }, [logout]);
@@ -26,9 +32,16 @@ const ProfileScreen = ({navigation, logout, refreshToken}) => {
     }
   }, [refreshToken]);
 
+  const registerDevice = () => {
+    if (apnToken) {
+      registerToken(apnToken.token);
+    }
+  };
+
   return (
     <TemplateScreen title={'More'}>
       <Text>Profile Here</Text>
+      <Button title={'Register device'} onPress={registerDevice} />
     </TemplateScreen>
   );
 };
@@ -62,10 +75,12 @@ ProfileScreen.navigationOptions = ({navigation}) => ({
 
 const mapStateToProps = state => ({
   refreshToken: reducers.refreshToken(state),
+  apnToken: reducers.apnToken(state),
 });
 
 const mapDispatchToProps = dispatch => ({
   logout: () => dispatch(actions.logout()),
+  registerToken: token => dispatch(actions.registerToken(token)),
 });
 
 export default connect(

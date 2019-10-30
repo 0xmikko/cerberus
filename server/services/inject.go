@@ -11,6 +11,7 @@ package services
 import (
 	"github.com/MikaelLazarev/cerberus/server/core"
 	"github.com/MikaelLazarev/cerberus/server/services/accounts"
+	"github.com/MikaelLazarev/cerberus/server/services/notifications"
 	"github.com/MikaelLazarev/cerberus/server/services/transactions"
 	"github.com/MikaelLazarev/cerberus/server/services/users"
 	"github.com/MikaelLazarev/cerberus/server/store"
@@ -19,17 +20,20 @@ import (
 type Services struct {
 	TransactionsService core.TransactionsService
 	AccountsService     core.AccountsService
+	NotificationService core.NotificationService
 	UserService         core.UserService
 }
 
 func InjectServices(Store store.GlobalStore) *Services {
 
+	notificationService := notifications.New(Store.NotificationStore)
 	accountsService := accounts.New(Store.AccountStore)
-	transactionsService := transactions.New(Store.TransactionsStore)
+	transactionsService := transactions.New(Store.TransactionsStore, notificationService)
 
 	return &Services{
-		AccountsService: accountsService,
+		AccountsService:     accountsService,
 		TransactionsService: transactionsService,
-		UserService: users.New(Store.UserStore, accountsService, transactionsService),
+		NotificationService: notificationService,
+		UserService:         users.New(Store.UserStore, accountsService, transactionsService),
 	}
 }

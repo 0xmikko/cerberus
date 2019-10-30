@@ -13,11 +13,16 @@ import (
 )
 
 type service struct {
-	store core.TransactionsStore
+	store               core.TransactionsStore
+	notificationService core.NotificationService
 }
 
-func New(transactionStore core.TransactionsStore) core.TransactionsService {
+func New(transactionStore core.TransactionsStore, ns core.NotificationService) core.TransactionsService {
 
-	cs := &service{transactionStore}
+	cs := &service{
+		store:               transactionStore,
+		notificationService: ns,
+	}
+
 	return cs
 }

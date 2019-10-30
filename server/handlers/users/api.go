@@ -14,12 +14,16 @@ import (
 )
 
 var userService core.UserService
+var notificationService core.NotificationService
 
-func RegisterController(r gin.IRouter, us core.UserService) {
+func RegisterController(r gin.IRouter, us core.UserService, ns core.NotificationService) {
 
 	userService = us
+	notificationService = ns
+
 	c := r.Group("/user")
 	c.GET("/", ProfileHandler)
 	c.PUT("/", UpdateHandler)
+	c.POST("/register/ios/", RegisterIOSHandler)
 
 }

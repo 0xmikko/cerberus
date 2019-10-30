@@ -64,7 +64,7 @@ func StartServer(services services.Services, port string) {
 	apiRouter.Use(middlewares.AuthHandler(services.UserService))
 	accounts.RegisterController(apiRouter, services.AccountsService)
 	transactions.RegisterController(apiRouter, services.TransactionsService)
-	users.RegisterController(apiRouter, services.UserService)
+	users.RegisterController(apiRouter, services.UserService, services.NotificationService)
 
 	// Temporary added to serve landing page
 

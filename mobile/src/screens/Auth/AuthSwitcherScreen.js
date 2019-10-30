@@ -5,9 +5,12 @@ import LoadingView from '../../components/Loading';
 import * as actions from '../../store/actions';
 import * as reducers from '../../store/reducers';
 import * as status from '../../store/utils/status';
+import PushNotificationIOS from '@react-native-community/push-notification-ios';
+import PushNotification from 'react-native-push-notification';
 
 const AuthSwitcherScreen = ({navigation, refreshToken, tokenStatus}) => {
   // Check next action based on refreshToken
+
   useEffect(() => {
     AsyncStorage.getItem('refreshToken').then(savedRefreshToken => {
       if (savedRefreshToken) {

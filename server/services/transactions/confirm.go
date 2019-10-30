@@ -32,6 +32,8 @@ func (s *service) Confirm(ctx context.Context, transactionID, userID core.ID, co
 		return errors.ErrorDBError
 	}
 
-	return nil
+	err = s.notificationService.SendCode(ctx, userID, "Hello")
+
+	return err
 
 }

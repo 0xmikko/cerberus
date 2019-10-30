@@ -14,6 +14,7 @@ import {createBottomTabNavigator} from 'react-navigation-tabs';
 import {Icon} from 'react-native-elements';
 import {ThemeProvider} from 'react-native-elements';
 
+import Notifications from './notifications';
 import configureStore from './src/store/configureStore';
 
 // AuthStack
@@ -32,6 +33,7 @@ import AccountsListScreen from './src/screens/Accounts/AccountsListScreen';
 // More
 import ProfileScreen from './src/screens/More/ProfileScreen';
 import {theme} from './styles';
+import PushNotification from 'react-native-push-notification';
 
 const store = configureStore();
 
@@ -139,10 +141,93 @@ const AppContainer = createAppContainer(
   ),
 );
 
-export default class App extends React.Component {
+class App extends React.Component {
+
+  // UNSAFE_componentWillMount() {
+  //   PushNotificationIOS.addEventListener('register', this._onRegistered);
+  //   PushNotificationIOS.addEventListener(
+  //     'registrationError',
+  //     this._onRegistrationError,
+  //   );
+  //   PushNotificationIOS.addEventListener(
+  //     'notification',
+  //     this._onRemoteNotification,
+  //   );
+  //   PushNotificationIOS.addEventListener(
+  //     'localNotification',
+  //     this._onLocalNotification,
+  //   );
+  //
+  //   PushNotificationIOS.requestPermissions();
+  // }
+  //
+  // _sendLocalNotification() {
+  //   PushNotificationIOS.presentLocalNotification({
+  //     alertBody: 'Sample local notification',
+  //     applicationIconBadgeNumber: 1,
+  //   });
+  // }
+  //
+  // _onRegistered(deviceToken) {
+  //   Alert.alert('Registered For Remote Push', `Device Token: ${deviceToken}`, [
+  //     {
+  //       text: 'Dismiss',
+  //       onPress: null,
+  //     },
+  //   ]);
+  // }
+  //
+  // _onRegistrationError(error) {
+  //   Alert.alert(
+  //     'Failed To Register For Remote Push',
+  //     `Error (${error.code}): ${error.message}`,
+  //     [
+  //       {
+  //         text: 'Dismiss',
+  //         onPress: null,
+  //       },
+  //     ],
+  //   );
+  // }
+  //
+  // _onRemoteNotification(notification) {
+  //   const result = `Message: ${notification.getMessage()};\n
+  //     badge: ${notification.getBadgeCount()};\n
+  //     sound: ${notification.getSound()};\n
+  //     category: ${notification.getCategory()};\n
+  //     content-available: ${notification.getContentAvailable()}.`;
+  //
+  //   Alert.alert('Push Notification Received', result, [
+  //     {
+  //       text: 'Dismiss',
+  //       onPress: null,
+  //     },
+  //   ]);
+  // }
+  //
+  // _onLocalNotification(notification) {
+  //   Alert.alert(
+  //     'Local Notification Received',
+  //     'Alert message: ' + notification.getMessage(),
+  //     [
+  //       {
+  //         text: 'Dismiss',
+  //         onPress: null,
+  //       },
+  //     ],
+  //   );
+  // }
+  //
+  // _showPermissions() {
+  //   PushNotificationIOS.checkPermissions(permissions => {
+  //     this.setState({permissions});
+  //   });
+  // }
+
   render() {
     return (
       <Provider store={store}>
+        <Notifications />
         <ThemeProvider theme={theme}>
           <AppContainer />
         </ThemeProvider>
@@ -150,3 +235,5 @@ export default class App extends React.Component {
     );
   }
 }
+
+export default App;

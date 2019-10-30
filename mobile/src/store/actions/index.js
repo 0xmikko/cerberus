@@ -5,4 +5,4 @@ export {
   getTransactionDetails,
   confirmTransaction,
 } from './transactions';
-export {getProfile, updateProfile} from './user';
+export {getProfile, updateProfile, saveAPNToken, registerToken} from './user';

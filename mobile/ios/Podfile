@@ -34,6 +34,7 @@ target 'mobile' do
   pod 'glog', :podspec => '../node_modules/react-native/third-party-podspecs/glog.podspec'
   pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'
 
+
   target 'mobileTests' do
     inherit! :search_paths
     # Pods for testing
@@ -42,12 +43,4 @@ target 'mobile' do
     use_native_modules!
 end
 
-target 'mobile-tvOS' do
-  # Pods for mobile-tvOS
 
-  target 'mobile-tvOSTests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
-
-end
