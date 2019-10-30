@@ -10,26 +10,31 @@ import "openzeppelin-solidity/contracts/ownership/Ownable.sol";
  * local test networks
  */
 contract CerberusWallet is ChainlinkClient, Ownable {
-  event NewPaymentRegistered(bytes32 request, address to, int256 amount);
-  event GetPermission(bytes32 id);
-  event Code(int256 code);
-  event MoneyCome(int256 value);
+
+  event NewPaymentRegistered(bytes32 request, address to, uint256 amount);
+  event MoneyCome(uint256 value);
+  event MoneySent(address to, uint256 amount);
 
   uint256 public data;
   uint256 oraclePayment;
 
   address alarmOracle;
   bytes32 alarmJobId;
+  uint256 alarmPayment;
 
   address cerberusOracle;
   bytes32 cerberusJobId;
+  uint256 cerberusPayment;
+
+  uint8 delay;
 
   struct PaymentRequest {
     address recipient;
-    int256 amount;
+    uint256 amount;
   }
 
-  mapping(bytes32=>PaymentRequest) public orders;
+  mapping(bytes32 => PaymentRequest) public orders;
+  mapping(bytes32 => bytes32) public ordersMapping;
 
   /**
    * @notice Deploy the contract with a specified address for the LINK
@@ -37,7 +42,22 @@ contract CerberusWallet is ChainlinkClient, Ownable {
    * @dev Sets the storage for the specified addresses
    * @param _link The address of the LINK token contract
    */
-  constructor(address _link) public {
+  constructor(address _link,
+              address _alarmOracle,
+              bytes32 _alarmJobId,
+              uint256 _alarmPayment,
+              address _cerberusOracle,
+              bytes32 _cerberusJobId,
+              uint256 _cerberusPayment
+            ) public {
+
+    alarmOracle = _alarmOracle;
+    alarmJobId = _alarmJobId;
+    alarmPayment = _alarmPayment;
+    cerberusOracle = _cerberusOracle;
+    cerberusJobId = _cerberusJobId;
+    cerberusPayment = _cerberusPayment;
+
     if (_link == address(0)) {
       setPublicChainlinkToken();
     } else {
@@ -49,10 +69,10 @@ contract CerberusWallet is ChainlinkClient, Ownable {
     emit MoneyCome(msg.value);
   }
 
-  function makeConfirmationRequest(uint256 _payment, address _to, int256 _amount) {
+  function makeConfirmationRequest(address _to, uint256 _amount) {
     Chainlink.Request memory req = buildChainlinkRequest(alarmJobId, this, this.fulfillConfirmationRequest.selector);
     req.addUint("until", now + 1 minutes);
-    bytes32 reqID = sendChainlinkRequestTo(alarmOracle, req, _payment);
+    bytes32 reqID = sendChainlinkRequestTo(alarmOracle, req, alarmPayment);
     orders[reqID] = PaymentRequest(_to, _amount);
     emit NewPaymentRegistered(reqID, _to, _amount);
   }
@@ -68,23 +88,22 @@ contract CerberusWallet is ChainlinkClient, Ownable {
   public
   recordChainlinkFulfillment(_requestId)
   {
-    emit GetPermission(_requestId);
-  }
-
-  function makePaymentRequest(bytes32 _requestID) {
-    Chainlink.Request memory req = buildChainlinkRequest(cerberusJobId, this, this.fulfillTimeRequest.selector);
-    req.addUint("until", now + 1 minutes);
-    bytes32 reqID = sendChainlinkRequestTo(cerberusOracle, req, _payment);
-    orders[reqID] = PaymentRequest(_to, _amount);
-    emit NewPaymentRegistered(reqID, _to, _amount);
+    Chainlink.Request memory req = buildChainlinkRequest(cerberusJobId, this, this.fulfillPaymentRequest.selector);
+    req.addUint("id", uint(_requestId));
+    bytes32 reqID = sendChainlinkRequestTo(cerberusOracle, req, cerberusPayment);
+    ordersMapping[reqID] = _requestId;
   }
 
 
+  function fulfillPaymentRequest(bytes32 _requestId, uint256 _data)
+  public
+  recordChainlinkFulfillment(_requestId)
+  {
+    PaymentRequest request = orders[ordersMapping[_requestId]];
+    address to = request.recipient;
+    uint256 amount = request.amount;
 
-
-
-
-
-
+    emit MoneySent(to, amount);
+  }
 
 }

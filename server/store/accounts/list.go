@@ -21,10 +21,10 @@ func (s *store) ListByUser(ctx context.Context, userID core.ID) (result []*core.
 	results := make([]*core.Account, 0)
 
 	filter := bson.D{{
-		"actual",
+		"owner",
 		bson.D{{
 			"$eq",
-			true,
+			userID,
 		}},
 	}}
 

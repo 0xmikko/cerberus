@@ -8,22 +8,46 @@
  */
 
 /* eslint-disable react-native/no-inline-styles */
-import React from 'react';
+import React, {useEffect} from 'react';
 import {connect} from 'react-redux';
-import {
-  StyleSheet,
-  Text,
-    Button,
-  Dimensions,
-} from 'react-native';
+import {StyleSheet, Text, Button, Dimensions, View} from 'react-native';
 import * as actions from '../../store/actions';
 import * as reducers from '../../store/reducers';
 import TemplateScreen from '../../components/templateScreen';
+import {isDataLoaded} from '../../components/isDataLoaded';
+import AccountsList from '../../containers/Accounts/AccountsList';
 
-const AccountsListScreen = ({navigation}) => {
+const AccountsListScreen = ({accounts, getAccountsList, navigation}) => {
+  useEffect(() => {
+    getAccountsList();
+    return () => {};
+  }, [getAccountsList]);
+
+  let notReadyStatus = isDataLoaded(accounts);
+  if (notReadyStatus) {
+    return notReadyStatus;
+  }
+  console.log(accounts);
+  const {data} = accounts;
+
+  if (!data) {
+    return <View />;
+  }
+
   return (
-    <TemplateScreen title={'Accounts'}>
-      <Text>Accounts here</Text>
+    <TemplateScreen
+      title={'Accounts'}
+      rightButton={true}
+      onPress={() => console.log('Oressed')}>
+      <View
+        style={{
+          flex: 1,
+          borderRadius: 10,
+          backgroundColor: '#F6F7F8',
+          height: Dimensions.get('window').height,
+        }}>
+        <AccountsList data={data} />
+      </View>
     </TemplateScreen>
   );
 };

@@ -7,3 +7,4 @@
 /contract/build/
 /server/config/*.p8
 /server/config/dev_apn.json
+*/node_modules/*

@@ -4,9 +4,11 @@
   "private": true,
   "dependencies": {
     "react": "^16.11.0",
+    "react-bootstrap": "^1.0.0-beta.14",
     "react-dom": "^16.11.0",
+    "react-qr-svg": "^2.2.1",
     "react-scripts": "3.2.0",
-    "web3": "^1.2.2"
+    "web3": "^1.0.0-beta.37"
   },
   "scripts": {
     "start": "react-scripts start",

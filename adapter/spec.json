@@ -10,10 +10,6 @@
       "type": "CerberusConfirmation",
       "confirmations": 3
     },
-    {
-      "type": "JSONParse",
-      "params": { "path": [ "confirmation" ] }
-    },
     { "type": "EthBool" },
     { "type": "EthTx" }
   ]

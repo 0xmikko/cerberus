@@ -9,13 +9,39 @@
 
 import React from 'react';
 import {StyleSheet, View, SafeAreaView, Image} from 'react-native';
-import {Text} from 'react-native-elements';
+import {Text, Button} from 'react-native-elements';
 
-const templateScreen = ({title, children}) => {
+const templateScreen = ({title, children, rightButton, onPress}) => {
+  let RightButton;
+  if (rightButton) {
+    RightButton = (
+      <Button
+        icon={{
+          name: 'add',
+          color: 'blue',
+        }}
+        type={'clear'}
+        onPress={onPress}
+      />
+    );
+  }
+
   return (
     <SafeAreaView style={styles.container}>
-      <View style={{paddingTop: 40, paddingLeft: 20, paddingBottom: 15}}>
+      <View
+        style={{
+          paddingTop: 40,
+          paddingLeft: 20,
+          paddingBottom: 15,
+          paddingRight: 10,
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+          alignContent: 'space-between',
+          alignItems: 'center',
+          width: '100%',
+        }}>
         <Text h1>{title}</Text>
+        {RightButton}
       </View>
       {children}
     </SafeAreaView>

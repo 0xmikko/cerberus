@@ -25,6 +25,6 @@ func ListHandler(c *gin.Context) {
 		return
 	}
 
-	c.JSON(http.StatusOK, accountsList)
+	c.JSON(http.StatusOK, gin.H{"data": accountsList})
 
 }
