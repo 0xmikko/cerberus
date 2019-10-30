@@ -7,6 +7,7 @@ import (
 	"github.com/MikaelLazarev/cerberus/server/core"
 	"github.com/gin-gonic/gin"
 	"github.com/sideshow/apns2"
+	"github.com/sideshow/apns2/payload"
 	"log"
 )
 
@@ -19,15 +20,6 @@ func (s *service) SendCode(ctx context.Context, userID core.ID, message string) 
 		return err
 	}
 
-	payload := gin.H{
-		"aps": gin.H{
-			"alert": message,
-		}}
-
-	jsonPayload, err := json.Marshal(payload)
-	if err != nil {
-		return err
-	}
 
 	for token, _ := range notificationToken.IOSTokens {
 
@@ -37,7 +29,7 @@ func (s *service) SendCode(ctx context.Context, userID core.ID, message string) 
 
 		notification.DeviceToken = token
 		notification.Topic = s.BundleID
-		notification.Payload = jsonPayload
+		notification.Payload = payload.NewPayload().AlertBody(message).Badge(1)
 
 		res, err := s.Client.Push(notification)
 
