@@ -18,8 +18,6 @@ import (
 // Get teasers of all actual stories
 func (s *store) ListByUser(ctx context.Context, userID core.ID) (result []*core.Account, err error) {
 
-	results := make([]*core.Account, 0)
-
 	filter := bson.D{{
 		"owner",
 		bson.D{{
@@ -27,6 +25,21 @@ func (s *store) ListByUser(ctx context.Context, userID core.ID) (result []*core.
 			userID,
 		}},
 	}}
+
+	return s.listByFilter(filter)
+
+}
+
+func (s *store) ListAll(ctx context.Context) ([]*core.Account, error) {
+
+	filter := bson.D{}
+
+	return s.listByFilter(filter)
+}
+
+func (s *store) listByFilter(filter interface{}) ([]*core.Account, error) {
+
+	results := make([]*core.Account, 0)
 
 	cur, err := s.Col.Find(context.TODO(), filter) // querying the "folders" collection
 	if err != nil {
@@ -51,5 +64,4 @@ func (s *store) ListByUser(ctx context.Context, userID core.ID) (result []*core.
 	}
 
 	return results, nil
-
 }

@@ -17,7 +17,7 @@ type (
 		Owner     ID        `json:"owner"`
 		AccountID ID        `json:"from"`
 		To        ID        `json:"to"`
-		Amount    int       `json:"amount"`
+		Amount    int64     `json:"amount"`
 		Deadline  time.Time `json:"deadline"`
 		State     int       `json:"state"`
 		Active    bool      `json:"active"`

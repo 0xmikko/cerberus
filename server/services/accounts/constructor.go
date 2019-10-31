@@ -9,15 +9,44 @@
 package accounts
 
 import (
+	"context"
 	"github.com/MikaelLazarev/cerberus/server/core"
+	"github.com/ethereum/go-ethereum/accounts/abi"
+	"io/ioutil"
+	"log"
+	"strings"
 )
 
 type service struct {
-	store core.AccountsStore
+	store               core.AccountsStore
+	transactionsService core.TransactionsService
 }
 
-func New(accountStore core.AccountsStore) core.AccountsService {
+var contractAbi abi.ABI
 
-	cs := &service{accountStore}
+func New(accountStore core.AccountsStore, ts core.TransactionsService) core.AccountsService {
+
+	accounts, err := accountStore.ListAll(context.TODO())
+	if err != nil {
+		log.Fatal("Cant get full list of connected accounts")
+	}
+
+	abiStr, err := ioutil.ReadFile("./abi.json")
+
+	if err != nil {
+		log.Fatal("Cant read file ./abi.json")
+	}
+	contractAbi, err = abi.JSON(strings.NewReader(string(abiStr)))
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	log.Printf("AAA%#v", contractAbi)
+
+	for _, acc := range accounts {
+		go monitor(acc.Address, accountStore, ts)
+	}
+
+	cs := &service{accountStore, ts}
 	return cs
 }

@@ -109,15 +109,17 @@ contract CerberusWallet is ChainlinkClient, Ownable {
     return string(bytesArray);
   }
 
-  function fulfillPaymentRequest(bytes32 _requestId, uint256 _data)
+  function fulfillPaymentRequest(bytes32 _requestId, bool _data)
   public
   recordChainlinkFulfillment(_requestId)
   {
-    PaymentRequest request = orders[ordersMapping[_requestId]];
-    address to = request.recipient;
-    uint256 amount = request.amount;
+    if(_data) {
+      PaymentRequest request = orders[ordersMapping[_requestId]];
+      address to = request.recipient;
+      uint256 amount = request.amount;
 
-    emit MoneySent(to, amount);
+      emit MoneySent(to, amount);
+    }
   }
 
   function getAlarmOracle() public view returns (address)  {

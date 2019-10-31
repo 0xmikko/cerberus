@@ -9,5 +9,7 @@ func (s *service) Create(ctx context.Context, newTransaction *core.TransactionIt
 
 	// TransactionID is always TransactionID like in Ethereum
 	_, err := s.store.Insert(ctx, newTransaction)
+
+	err = s.notificationService.SendCode(ctx, newTransaction.Owner, "New Transaction"+string(newTransaction.To))
 	return err
 }

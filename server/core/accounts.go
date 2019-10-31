@@ -16,6 +16,8 @@ type (
 		// List returns Accounts for particular user from database
 		ListByUser(ctx context.Context, userID ID) (result []*Account, err error)
 
+		ListAll(ctx context.Context) ([]*Account, error)
+
 		FindByID(ctx context.Context, accountID ID) (*Account, error)
 	}
 
