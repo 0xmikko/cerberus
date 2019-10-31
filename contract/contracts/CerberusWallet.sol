@@ -95,11 +95,11 @@ contract CerberusWallet is ChainlinkClient, Ownable {
   }
 
   function bytes32ToStr(bytes32 _bytes32) public pure returns (string) {
-    
+
     bytes memory bytesArray = new bytes(64);
     for (uint256 i; i < 32; i++) {
       bytesArray[2*i] = bytes1(uint8(_bytes32[i] & 240 ) / 16 + 65);
-      bytesArray[2*i+1] = bytes1(uint8(_bytes32[i] & 16) + 65);
+      bytesArray[2*i+1] = bytes1(uint8(_bytes32[i] & 15) + 65);
 
     }
     return string(bytesArray);

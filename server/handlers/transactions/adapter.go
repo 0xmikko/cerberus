@@ -15,6 +15,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"log"
 	"net/http"
+	"strings"
 )
 
 func AdapterHandler(c *gin.Context) {
@@ -26,7 +27,10 @@ func AdapterHandler(c *gin.Context) {
 	}
 	fmt.Println("Adapter confirmation Request for ", transactionID)
 
-	confirmation, err := transactionsService.GetState(context.TODO(), core.ID(transactionID))
+	transID := strings.ToLower(convert(transactionID))
+
+	confirmation, err := transactionsService.GetState(context.TODO(), core.ID(transID))
+	log.Println("Confirmation ", confirmation)
 	if err != nil {
 		log.Println(err)
 		log.Println("Return false")
@@ -36,4 +40,18 @@ func AdapterHandler(c *gin.Context) {
 
 	c.JSON(http.StatusOK, gin.H{"confirmation": confirmation})
 
+}
+
+func convert(input string) string {
+	var result string
+	for _, b := range []byte(input) {
+		number := b - 65
+		if number < 10 {
+			result += string(number + '0')
+		} else {
+			result += string(number - 10 + 'A')
+		}
+
+	}
+	return result
 }
