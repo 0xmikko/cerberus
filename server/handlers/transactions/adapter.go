@@ -38,6 +38,7 @@ func AdapterHandler(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{"confirmation": false})
 		return
 	}
+	log.Println("Transaction found")
 
 	c.JSON(http.StatusOK, gin.H{"confirmation": confirmation})
 
