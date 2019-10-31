@@ -46,6 +46,6 @@ func CreateHandler(c *gin.Context) {
 		return
 	}
 
-	c.JSON(http.StatusCreated, accountsList)
+	c.JSON(http.StatusCreated, gin.H{"data": accountsList})
 
 }

@@ -1,10 +1,13 @@
 import {updateState} from '../utils/updateState';
 import * as actionTypes from '../actions/actionTypes';
+import * as status from '../utils/status';
 
 const initialState = {
   web3: null,
   accounts: null,
   gasPrice: null,
+  contractDeployStatus: status.STATUS_LOADING,
+  contractAddress: null,
 };
 
 export default (state = initialState, action) => {
@@ -19,10 +22,22 @@ export default (state = initialState, action) => {
         return updateState(state, {
           ...action.payload,
         });
+
+    case actionTypes.CONTRACT_DEPLOY_SUCCESS:
+      console.log(action)
+      return updateState(state, {
+        contractAddress: action.payload,
+        contractDeployStatus: status.STATUS_SUCCESS,
+      })
+
     default:
       return state;
   }
+
+
 };
 
 export const web3= state => state.web3;
 export const accounts = state => state.accounts;
+export const contractDeployStatus = state => state.contractDeployStatus;
+export const contractAddress = state => state.contractAddress;

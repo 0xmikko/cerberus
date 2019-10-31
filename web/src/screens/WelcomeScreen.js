@@ -1,16 +1,31 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import { Button } from 'react-bootstrap';
 import { QRCode } from "react-qr-svg";
 import * as reducers from "../store/reducers";
 import * as actions from "../store/actions";
 import {withRouter} from "react-router";
 import {connect} from "react-redux";
+import * as status from '../store/utils/status';
 
-function WelcomeScreen({Web3, accounts, gasPrice, deployContract}) {
+function WelcomeScreen({Web3, accounts, gasPrice, deployContract, contractDeployStatus, contractAddress, history}) {
 
     const address = "";
 
     const accountsRendered = accounts.map(acc => <>{acc}<br /></>)
+
+    useEffect(() => {
+        if (contractDeployStatus === status.STATUS_SUCCESS) {
+            console.log("redirect to", contractAddress)
+            history.push('/wallet/' + contractAddress + '/')
+
+        }
+
+    }, [contractDeployStatus]);
+
+
+    const onDeployContract = () => {
+        deployContract(accounts[0])
+    }
 
     return (
         <div className="App">
@@ -19,14 +34,8 @@ function WelcomeScreen({Web3, accounts, gasPrice, deployContract}) {
                 <br /><br />
                 { accountsRendered }
                 Contract: { address }<br/>
-                <Button onClick={() => deployContract(accounts[0])}>Deploy</Button><br />
-                <QRCode
-                    bgColor="#FFFFFF"
-                    fgColor="#000000"
-                    level="Q"
-                    style={{ width: 256 }}
-                    value={accounts[0] || "0"}
-                />
+                <Button onClick={onDeployContract}>Deploy</Button><br />
+
             </header>
 
         </div>
@@ -36,7 +45,8 @@ function WelcomeScreen({Web3, accounts, gasPrice, deployContract}) {
 const mapStateToProps = state => ({
     Web3: reducers.Web3(state),
     accounts: reducers.accounts(state),
-
+    contractDeployStatus: reducers.contractDeployStatus(state),
+    contractAddress: reducers.contractAddress(state),
 
 });
 

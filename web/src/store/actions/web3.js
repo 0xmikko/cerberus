@@ -30,7 +30,7 @@ export const deployContract = from => {
                 "0x2ebb1c1a4b1e4229adac24ee0b5f784f",                               // Alarm JobID
                 "1000000000000000000",                                              // Alarm Payment
                 "0x83F00b902cbf06E316C95F51cbEeD9D2572a349a",                       // Cerberus Address
-                "0xd4b02e3a2c354111911739c5dd3264a9",                               // Cerberus JobID
+                "0x9a6e266667a64e83a6b3dcfc7e0fbd5f",                               // Cerberus JobID
                 "1000000000000000000"                                               // Cerberus Payment
             ],
         })
@@ -49,6 +49,8 @@ export const deployContract = from => {
             .on('transactionHash', function(transactionHash) { console.log("THASH", transactionHash)})
             .on('receipt', function(receipt){
                 console.log(receipt.contractAddress) // contains the new contract address
+                dispatch({type: actionTypes.CONTRACT_DEPLOY_SUCCESS,
+                payload: receipt.contractAddress})
             })
             .on('confirmation', function(confirmationNumber, receipt) {
                 console.log(confirmationNumber) })

@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
 });
 
 const mapDispatchToProps = dispatch => ({
-  createAccount: account => dispatch(actions.createAccount('new', account)),
+  createAccount: account => dispatch(actions.createAccount(account)),
 });
 
 export default connect(

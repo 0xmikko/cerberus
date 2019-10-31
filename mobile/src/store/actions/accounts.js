@@ -19,7 +19,19 @@ export const getAccountDetails = createDataloaderDetailAction(
   actionTypes.ACCOUNTS_PREFIX,
 );
 
-export const createAccount = createDataloaderCreateUpdateDataAction(
-  '/api/accounts/',
-  actionTypes.ACCOUNTS_PREFIX,
-);
+export const createAccount = (account, hash) => {
+  console.log(account)
+  return {
+    [RSAA]: {
+    endpoint: getApiById('/api/accounts/'),
+        method: 'POST',
+        body: JSON.stringify(account),
+        headers: withAuth({'Content-Type': 'application/json'}),
+        types: [
+      {type: actionTypes.ACCOUNTS_PREFIX + actionTypes.UPLOAD_REQUEST, meta: {account, hash}},
+      {type: actionTypes.ACCOUNTS_PREFIX + actionTypes.LIST_SUCCESS, meta: {account, hash}},
+      {type: actionTypes.ACCOUNTS_PREFIX + actionTypes.UPLOAD_FAILURE, meta: {account, hash}},
+    ],
+  },
+  }
+};

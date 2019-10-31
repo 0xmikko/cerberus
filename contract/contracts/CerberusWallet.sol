@@ -89,11 +89,25 @@ contract CerberusWallet is ChainlinkClient, Ownable {
   recordChainlinkFulfillment(_requestId)
   {
     Chainlink.Request memory req = buildChainlinkRequest(cerberusJobId, this, this.fulfillPaymentRequest.selector);
-    req.addUint("id", uint(_requestId));
+    req.add("id", bytes32ToStr(_requestId));
     bytes32 reqID = sendChainlinkRequestTo(cerberusOracle, req, cerberusPayment);
     ordersMapping[reqID] = _requestId;
   }
 
+  function bytes32ToStr(bytes32 _bytes32) public pure returns (string) {
+
+    // string memory str = string(_bytes32);
+    // TypeError: Explicit type conversion not allowed from "bytes32" to "string storage pointer"
+    // thus we should fist convert bytes32 to bytes (to dynamically-sized byte array)
+
+    bytes memory bytesArray = new bytes(64);
+    for (uint256 i; i < 32; i++) {
+      bytesArray[2*i] = bytes1(uint8(_bytes32[i] & 240 ) / 16 + 65);
+      bytesArray[2*i+1] = bytes1(uint8(_bytes32[i] & 16) + 65);
+
+    }
+    return string(bytesArray);
+  }
 
   function fulfillPaymentRequest(bytes32 _requestId, uint256 _data)
   public

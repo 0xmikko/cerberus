@@ -5,6 +5,7 @@ import { Button } from 'react-bootstrap';
 
 import * as reducers from "../store/reducers";
 import * as actions from "../store/actions";
+import {QRCode} from "react-qr-svg";
 
 
 function WalletScreen({match: {params: {id}}, send, deposit, accounts}) {
@@ -19,8 +20,15 @@ function WalletScreen({match: {params: {id}}, send, deposit, accounts}) {
     }
     return (
         <>
-            <div>Contract {id}</div>
-            <Button onClick={sendMoney}>Send Money</Button>
+            <div>Contract <a href={`https://ropsten.etherscan.io/address/${id}#events`}>{id}</a></div>
+            <Button onClick={sendMoney}>Send Money</Button><br /><br />
+            <QRCode
+                bgColor="#FFFFFF"
+                fgColor="#000000"
+                level="Q"
+                style={{ width: 256 }}
+                value={id}
+            />
         </>
 
 

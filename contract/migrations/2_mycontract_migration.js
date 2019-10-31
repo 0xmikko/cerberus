@@ -15,7 +15,7 @@ module.exports = (deployer, network) => {
             "1000000000000000000",                  // Alarm Payment
             "0x83F00b902cbf06E316C95F51cbEeD9D2572a349a",                       // Cerberus Address
             "0xd4b02e3a2c354111911739c5dd3264a9",     // Cerberus JobID
-            "1000000000000000000") //LinkToken.address)
+            "1000000000000000000") //cerberus Payment
       })
     })
   } else {
