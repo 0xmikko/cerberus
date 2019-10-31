@@ -25,7 +25,7 @@ export const confirmTransaction = (id, status, hash) => ({
     headers: withAuth({'Content-Type': 'application/json'}),
     types: [
       {type: actionTypes.TRANSACTION_CONFIRM_REQUEST, meta: {id, hash}},
-      {type: actionTypes.TRANSACTION_CONFIRM_SUCCESS, meta: {id, hash}},
+      {type: actionTypes.TRANSACTIONS_PREFIX + actionTypes.LIST_SUCCESS , meta: {id, hash}},
       {type: actionTypes.TRANSACTION_CONFIRM_FAILURE, meta: {id, hash}},
     ],
   },

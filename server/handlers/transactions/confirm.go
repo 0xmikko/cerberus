@@ -25,6 +25,7 @@ func ConfirmHandler(c *gin.Context) {
 	userID := c.MustGet("userId").(core.ID)
 	transactionID, ok := c.Params.Get("id")
 	if !ok {
+		log.Println("Can't get id parameter")
 		c.AbortWithStatusJSON(http.StatusBadRequest, gin.H{"message": "Wrong parameter"})
 		return
 	}
@@ -34,15 +35,24 @@ func ConfirmHandler(c *gin.Context) {
 	var confirmation Confirmation
 	err := c.BindJSON(&confirmation)
 	if err != nil {
+		log.Println(err)
 		c.AbortWithStatusJSON(403, gin.H{"error": "Wrong parameters"})
 		return
 	}
 
 	err = transactionsService.Confirm(context.TODO(), core.ID(transactionID), userID, confirmation.Status)
 	if err != nil {
+		log.Println(err)
 		c.AbortWithStatusJSON(403, gin.H{"error": err.Error()})
 		return
 	}
 
-	c.JSON(http.StatusOK, gin.H{"message": "ok"})
+	transactionsList, err := transactionsService.List(context.TODO(), userID)
+	if err != nil {
+		log.Println(err)
+		c.AbortWithStatusJSON(403, gin.H{"error": err.Error()})
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{"data": transactionsList})
 }

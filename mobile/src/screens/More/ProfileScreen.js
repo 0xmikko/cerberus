@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
 
 ProfileScreen.navigationOptions = ({navigation}) => ({
   headerRight: () => (
-    <Button title={'Logout'} onPress={navigation.getParam('logout')} />
+    <Button type="clear" title={'Logout'} onPress={navigation.getParam('logout')} />
   ),
 });
 

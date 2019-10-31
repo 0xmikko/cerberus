@@ -5,7 +5,7 @@ import {styles} from './cardstyles';
 import {numberWithCommas} from '../utils/numberFormat';
 import Blockies from './blockies';
 
-const ListItem = ({icon, title, subtitle, amount, onSelect}) => {
+const ListItem = ({icon, title, subtitle, amount, onSelect, color}) => {
   console.log('CO', amount, typeof amount);
 
   let amountTag;
@@ -26,7 +26,7 @@ const ListItem = ({icon, title, subtitle, amount, onSelect}) => {
             <Text h4 style={{flex: 1, flexWrap: 'wrap'}}>
               {title}
             </Text>
-            <Text style={{color: '#797979'}}>{subtitle}</Text>
+            <Text style={{color: color || 'black'}}>{subtitle}</Text>
           </View>
         </View>
         <View style={styles.rightContainer}>{amountTag}</View>
