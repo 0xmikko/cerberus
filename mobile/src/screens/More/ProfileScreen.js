@@ -10,7 +10,8 @@
 /* eslint-disable react-native/no-inline-styles */
 import React, {useEffect} from 'react';
 import {connect} from 'react-redux';
-import {StyleSheet, Text, Button, Dimensions} from 'react-native';
+import {StyleSheet, View, Text,  Dimensions} from 'react-native';
+import { Button } from 'react-native-elements'
 import * as actions from '../../store/actions';
 import * as reducers from '../../store/reducers';
 import TemplateScreen from '../../components/templateScreen';
@@ -39,9 +40,21 @@ const ProfileScreen = ({
   };
 
   return (
-    <TemplateScreen title={'More'}>
-      <Text>Profile Here</Text>
-      <Button title={'Register device'} onPress={registerDevice} />
+    <TemplateScreen title={'Settings'}>
+      <View style={{
+        width: '100%',
+        alignItems: 'center',
+        justifyContent: 'center',
+        alignContent: 'center',}}>
+      <View style={{
+        width: '90%',
+        paddingTop: 40,
+
+      }}>
+          <Button title={'Register device'} onPress={registerDevice} containerStyle={{width: '100%', paddingBottom: 20}}/>
+        <Button title={'Panic mode'} onPress={registerDevice} containerStyle={{width: '100%'}} buttonStyle={{backgroundColor: 'red'}}/>
+      </View>
+      </View>
     </TemplateScreen>
   );
 };

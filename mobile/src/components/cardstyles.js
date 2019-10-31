@@ -12,6 +12,7 @@ export const styles = StyleSheet.create({
     alignContent: 'space-between',
     justifyContent: 'space-between',
     backgroundColor: 'white',
+    width: '100%',
   },
   leftContainer: {
     alignItems: 'center',
@@ -20,15 +21,15 @@ export const styles = StyleSheet.create({
   },
   textContainer: {
     paddingLeft: 15,
-    paddingRight: 10,
+    paddingRight: 0,
     alignItems: 'stretch',
     alignContent: 'space-between',
     marginBottom: 5,
   },
   rightContainer: {
-    width: 100,
-    alignItems: 'flex-end',
-    alignContent: 'flex-end',
-    paddingRight: 15,
+    alignItems: 'center',
+    alignContent: 'center',
+    paddingRight: 25,
+
   },
 });

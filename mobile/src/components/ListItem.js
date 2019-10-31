@@ -10,9 +10,8 @@ const ListItem = ({icon, title, subtitle, amount, onSelect}) => {
 
   let amountTag;
   if (amount !== '-' && typeof amount === 'number') {
-    amountTag = <Text style={{fontSize: 14}}>${numberWithCommas(amount)}</Text>;
+    amountTag = <Text style={{fontSize: 14, paddingRight: 30,}}>{numberWithCommas(amount/1000000)} </Text>;
   }
-
   return (
     <TouchableOpacity onPress={onSelect}>
       <View style={styles.container}>
@@ -20,10 +19,10 @@ const ListItem = ({icon, title, subtitle, amount, onSelect}) => {
           <Blockies
             blockies={title} //string content to generate icon
             size={16} // blocky icon size
-            scale={2}
+            scale={3}
             style={{width: 32, height: 32}} // style of the view will wrap the icon
           />
-          <View style={[styles.textContainer, {width: '80%'}]}>
+          <View style={[styles.textContainer, {width: '75%'}]}>
             <Text h4 style={{flex: 1, flexWrap: 'wrap'}}>
               {title}
             </Text>
