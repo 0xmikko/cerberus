@@ -28,6 +28,7 @@ func AdapterHandler(c *gin.Context) {
 	fmt.Println("Adapter confirmation Request for ", transactionID)
 
 	transID := strings.ToLower(convert(transactionID))
+	log.Println("Checking", transID)
 
 	confirmation, err := transactionsService.GetState(context.TODO(), core.ID(transID))
 	log.Println("Confirmation ", confirmation)
