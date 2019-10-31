@@ -29,11 +29,11 @@ import TransactionDetailsScreen from './src/screens/Transactions/TransactionDeta
 
 // Accounts stack
 import AccountsListScreen from './src/screens/Accounts/AccountsListScreen';
+import NewAccountScreen from './src/screens/Accounts/NewAccount';
 
 // More
 import ProfileScreen from './src/screens/More/ProfileScreen';
 import {theme} from './styles';
-import PushNotification from 'react-native-push-notification';
 
 const store = configureStore();
 
@@ -50,6 +50,7 @@ const TransactionsStack = createStackNavigator(
 const AccountsStack = createStackNavigator(
   {
     AccountsListScreen,
+    NewAccountScreen,
   },
   {
     initialRouteName: 'AccountsListScreen',
@@ -142,7 +143,6 @@ const AppContainer = createAppContainer(
 );
 
 class App extends React.Component {
-
   // UNSAFE_componentWillMount() {
   //   PushNotificationIOS.addEventListener('register', this._onRegistered);
   //   PushNotificationIOS.addEventListener(

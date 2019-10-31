@@ -8,7 +8,14 @@ module.exports = (deployer, network) => {
   if (!network.startsWith('live')) {
     deployer.deploy(LinkToken).then(() => {
       return deployer.deploy(Oracle, LinkToken.address).then(() => {
-        return deployer.deploy(MyContract, '0x20fE562d797A42Dcb3399062AE9546cd06f63280') //LinkToken.address)
+        return deployer.deploy(MyContract,
+            "0x20fE562d797A42Dcb3399062AE9546cd06f63280",                       // Link Contract
+            "0xc99B3D447826532722E41bc36e644ba3479E4365",                       // Alarm Oracle
+            "0x2ebb1c1a4b1e4229adac24ee0b5f784f",     // Alarm JobID
+            "1000000000000000000",                  // Alarm Payment
+            "0x83F00b902cbf06E316C95F51cbEeD9D2572a349a",                       // Cerberus Address
+            "0xd4b02e3a2c354111911739c5dd3264a9",     // Cerberus JobID
+            "1000000000000000000") //LinkToken.address)
       })
     })
   } else {

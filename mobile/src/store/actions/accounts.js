@@ -6,13 +6,20 @@ import {withAuth} from '../reducers';
 import {
   createDataloaderDetailAction,
   createDataloaderListAction,
+  createDataloaderCreateUpdateDataAction,
 } from './dataloader';
 
 export const getAccountsList = createDataloaderListAction(
   '/api/accounts/',
   actionTypes.ACCOUNTS_PREFIX,
 );
+
 export const getAccountDetails = createDataloaderDetailAction(
   '/api/accounts/:id/',
+  actionTypes.ACCOUNTS_PREFIX,
+);
+
+export const createAccount = createDataloaderCreateUpdateDataAction(
+  '/api/accounts/',
   actionTypes.ACCOUNTS_PREFIX,
 );

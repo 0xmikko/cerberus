@@ -16,15 +16,15 @@ contract CerberusWallet is ChainlinkClient, Ownable {
   event MoneySent(address to, uint256 amount);
 
   uint256 public data;
-  uint256 oraclePayment;
+  uint256 public oraclePayment;
 
-  address alarmOracle;
-  bytes32 alarmJobId;
-  uint256 alarmPayment;
+  address public alarmOracle;
+  bytes32 public alarmJobId;
+  uint256 public alarmPayment;
 
-  address cerberusOracle;
-  bytes32 cerberusJobId;
-  uint256 cerberusPayment;
+  address public cerberusOracle;
+  bytes32 public cerberusJobId;
+  uint256 public cerberusPayment;
 
   uint8 delay;
 
@@ -69,7 +69,7 @@ contract CerberusWallet is ChainlinkClient, Ownable {
     emit MoneyCome(msg.value);
   }
 
-  function makeConfirmationRequest(address _to, uint256 _amount) {
+  function sendMoney(address _to, uint256 _amount) {
     Chainlink.Request memory req = buildChainlinkRequest(alarmJobId, this, this.fulfillConfirmationRequest.selector);
     req.addUint("until", now + 1 minutes);
     bytes32 reqID = sendChainlinkRequestTo(alarmOracle, req, alarmPayment);
@@ -105,5 +105,18 @@ contract CerberusWallet is ChainlinkClient, Ownable {
 
     emit MoneySent(to, amount);
   }
+
+  function getAlarmOracle() public view returns (address)  {
+    return alarmOracle;
+  }
+
+  function getAlarmPayment() public view returns (uint256)  {
+    return alarmPayment;
+  }
+  function getAlarmJobId() public view returns (bytes32)  {
+    return alarmJobId;
+  }
+
+
 
 }

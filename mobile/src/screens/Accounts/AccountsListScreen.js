@@ -34,11 +34,16 @@ const AccountsListScreen = ({accounts, getAccountsList, navigation}) => {
     return <View />;
   }
 
+  const newScreen = () => {
+    console.log("NS")
+    navigation.push('NewAccountScreen');
+  }
+
   return (
     <TemplateScreen
       title={'Accounts'}
       rightButton={true}
-      onPress={() => console.log('Oressed')}>
+      onPress={newScreen}>
       <View
         style={{
           flex: 1,

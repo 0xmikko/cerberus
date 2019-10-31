@@ -1,5 +1,5 @@
 export {login, signup, refreshAccessToken, logout} from './auth';
-export {getAccountsList, getAccountDetails} from './accounts';
+export {getAccountsList, getAccountDetails, createAccount} from './accounts';
 export {
   getTransactionsList,
   getTransactionDetails,

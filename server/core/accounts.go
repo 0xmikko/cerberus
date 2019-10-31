@@ -20,7 +20,7 @@ type (
 	}
 
 	AccountsService interface {
-		Create(ctx context.Context, userID ID, account string) (ID, error)
+		Create(ctx context.Context, userID ID, account string) error
 		Retrieve(ctx context.Context, userID, accountID ID) (*Account, error)
 		ListByUser(ctx context.Context, userID ID) (result []*Account, err error)
 	}

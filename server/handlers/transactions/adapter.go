@@ -13,6 +13,7 @@ import (
 	"fmt"
 	"github.com/MikaelLazarev/cerberus/server/core"
 	"github.com/gin-gonic/gin"
+	"log"
 	"net/http"
 )
 
@@ -27,7 +28,9 @@ func AdapterHandler(c *gin.Context) {
 
 	confirmation, err := transactionsService.GetState(context.TODO(), core.ID(transactionID))
 	if err != nil {
-		c.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		log.Println(err)
+		log.Println("Return false")
+		c.JSON(http.StatusOK, gin.H{"confirmation": false})
 		return
 	}
 

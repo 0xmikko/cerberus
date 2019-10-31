@@ -44,10 +44,12 @@ func (s service) SignUp(ctx context.Context, userDTO *core.SignUpDTO) (*core.Use
 		return nil, err
 	}
 
-	acc, err := s.accountService.Create(ctx, newID, "0xTESTTESTTESTTESTTESTTESTTESTTESTTESTTEST12")
+	err = s.accountService.Create(ctx, newID, "0xTESTTESTTESTTESTTESTTESTTESTTESTTESTTEST12")
 	if err != nil {
 		return nil, errors.ErrorCantCreateAccounts
 	}
+
+	acc := core.ID("0xTESTTESTTESTTESTTESTTESTTESTTESTTESTTEST12")
 
 	transactions := []*core.TransactionItem{
 		&core.TransactionItem{
