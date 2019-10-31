@@ -10,10 +10,12 @@ package accounts
 
 import (
 	"context"
+	"github.com/MikaelLazarev/cerberus/server/config"
 	"github.com/MikaelLazarev/cerberus/server/core"
 	"github.com/ethereum/go-ethereum/accounts/abi"
 	"io/ioutil"
 	"log"
+	"os"
 	"strings"
 )
 
@@ -31,11 +33,20 @@ func New(accountStore core.AccountsStore, ts core.TransactionsService) core.Acco
 		log.Fatal("Cant get full list of connected accounts")
 	}
 
-	abiStr, err := ioutil.ReadFile("./abi.json")
+	configType := config.GetConfigType()
 
-	if err != nil {
-		log.Fatal("Cant read file ./abi.json")
+	var abiStr []byte
+
+	if configType == config.PROD {
+		abiStr = []byte(os.Getenv("ABI"))
+
+	} else {
+		abiStr, err = ioutil.ReadFile("./abi.json")
+		if err != nil {
+			log.Fatal("Cant read file ./abi.json")
+		}
 	}
+
 	contractAbi, err = abi.JSON(strings.NewReader(string(abiStr)))
 	if err != nil {
 		log.Fatal(err)
