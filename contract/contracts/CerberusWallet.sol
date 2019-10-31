@@ -14,6 +14,7 @@ contract CerberusWallet is ChainlinkClient, Ownable {
   event NewPaymentRegistered(bytes32 request, address to, uint256 amount);
   event MoneyCome(uint256 value);
   event MoneySent(address to, uint256 amount);
+  event Confirmation(bool value);
 
   uint256 public data;
   uint256 public oraclePayment;
@@ -105,12 +106,12 @@ contract CerberusWallet is ChainlinkClient, Ownable {
     return string(bytesArray);
   }
 
-  function fulfillPaymentRequest(bytes32 _requestId, uint256 _data)
+  function fulfillPaymentRequest(bytes32 _requestId, bool _data)
   public
   recordChainlinkFulfillment(_requestId)
   {
-    MoneyCome(_data);
-    if(_data == 1) {
+    Confirmation(_data);
+    if(_data == true) {
       PaymentRequest request = orders[ordersMapping[_requestId]];
       address to = request.recipient;
       uint256 amount = request.amount;
