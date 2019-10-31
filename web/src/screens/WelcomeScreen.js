@@ -1,9 +1,7 @@
 import React, {useEffect, useState} from 'react';
-import { Button } from 'react-bootstrap';
-import { QRCode } from "react-qr-svg";
+import {Button, Row, Container, Col, Form, FormControl} from 'react-bootstrap';
 import * as reducers from "../store/reducers";
 import * as actions from "../store/actions";
-import {withRouter} from "react-router";
 import {connect} from "react-redux";
 import * as status from '../store/utils/status';
 
@@ -14,6 +12,7 @@ function WelcomeScreen({Web3, accounts, gasPrice, deployContract, contractDeploy
     const accountsRendered = accounts.map(acc => <>{acc}<br /></>)
 
     useEffect(() => {
+
         if (contractDeployStatus === status.STATUS_SUCCESS) {
             console.log("redirect to", contractAddress)
             history.push('/wallet/' + contractAddress + '/')
@@ -27,14 +26,27 @@ function WelcomeScreen({Web3, accounts, gasPrice, deployContract, contractDeploy
         deployContract(accounts[0])
     }
 
+    if (contractDeployStatus === status.STATUS_LOADING) {
+        return  <div className="App">
+            <header className="App-header">
+                Deploying new wallet, please wait...
+            </header>
+            |</div>
+    }
+
     return (
         <div className="App">
             <header className="App-header">
-                Cerberus Wallet
+                Welcome to Cerberus Wallet
                 <br /><br />
-                { accountsRendered }
-                Contract: { address }<br/>
-                <Button onClick={onDeployContract}>Deploy</Button><br />
+                Please connect existing wallet <br /><br />
+                <Form>
+                    <FormControl style={{fontSize: 30, marginRight: 20}} placeholder={"Your wallet address"}/>
+                    <Button onClick={onDeployContract} style={{fontSize: 30, paddingLeft: 10}}>Connect</Button>
+                </Form>
+                <br />
+                Or<br />
+                <Button onClick={onDeployContract} style={{fontSize: 30, paddingLeft: 10}}>Deploy</Button><br />
 
             </header>
 

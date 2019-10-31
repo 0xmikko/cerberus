@@ -10,7 +10,7 @@ import { Provider } from "react-redux";
 import { ReactReduxContext } from "react-redux";
 import configureStore from "./store/configureStore";
 
-const history = createBrowserHistory();
+const history = createBrowserHistory({ basename: '/wallet' });
 const store = configureStore(history);
 console.log(store)
 ReactDOM.render(

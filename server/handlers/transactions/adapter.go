@@ -35,12 +35,12 @@ func AdapterHandler(c *gin.Context) {
 	if err != nil {
 		log.Println(err)
 		log.Println("Return false")
-		c.JSON(http.StatusOK, gin.H{"confirmation": false})
+		c.JSON(http.StatusOK, gin.H{"confirmation": 55})
 		return
 	}
 	log.Println("Transaction found")
 
-	c.JSON(http.StatusOK, gin.H{"confirmation": confirmation})
+	c.JSON(http.StatusOK, gin.H{"confirmation": 100})
 
 }
 
