@@ -30,8 +30,8 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
                BuildableName = "Cerberus Wallet.app"
-               BlueprintName = "mobile"
-               ReferencedContainer = "container:mobile.xcodeproj">
+               BlueprintName = "CerberusWallet"
+               ReferencedContainer = "container:CerberusWallet.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -43,9 +43,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "mobileTests.xctest"
-               BlueprintName = "mobileTests"
-               ReferencedContainer = "container:mobile.xcodeproj">
+               BuildableName = "CerberusWalletTests.xctest"
+               BlueprintName = "CerberusWalletTests"
+               ReferencedContainer = "container:CerberusWallet.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -60,8 +60,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
             BuildableName = "Cerberus Wallet.app"
-            BlueprintName = "mobile"
-            ReferencedContainer = "container:mobile.xcodeproj">
+            BlueprintName = "CerberusWallet"
+            ReferencedContainer = "container:CerberusWallet.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <Testables>
@@ -70,15 +70,15 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "mobileTests.xctest"
-               BlueprintName = "mobileTests"
-               ReferencedContainer = "container:mobile.xcodeproj">
+               BuildableName = "CerberusWalletTests.xctest"
+               BlueprintName = "CerberusWalletTests"
+               ReferencedContainer = "container:CerberusWallet.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
-      buildConfiguration = "Debug"
+      buildConfiguration = "Release"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
@@ -93,8 +93,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
             BuildableName = "Cerberus Wallet.app"
-            BlueprintName = "mobile"
-            ReferencedContainer = "container:mobile.xcodeproj">
+            BlueprintName = "CerberusWallet"
+            ReferencedContainer = "container:CerberusWallet.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -110,8 +110,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
             BuildableName = "Cerberus Wallet.app"
-            BlueprintName = "mobile"
-            ReferencedContainer = "container:mobile.xcodeproj">
+            BlueprintName = "CerberusWallet"
+            ReferencedContainer = "container:CerberusWallet.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

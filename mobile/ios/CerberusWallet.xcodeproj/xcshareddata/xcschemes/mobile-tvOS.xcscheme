@@ -31,7 +31,7 @@
                BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
                BuildableName = "mobile-tvOS.app"
                BlueprintName = "mobile-tvOS"
-               ReferencedContainer = "container:mobile.xcodeproj">
+               ReferencedContainer = "container:CerberusWallet.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -45,7 +45,7 @@
                BlueprintIdentifier = "2D02E48F1E0B4A5D006451C7"
                BuildableName = "mobile-tvOSTests.xctest"
                BlueprintName = "mobile-tvOSTests"
-               ReferencedContainer = "container:mobile.xcodeproj">
+               ReferencedContainer = "container:CerberusWallet.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -61,7 +61,7 @@
             BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
             BuildableName = "mobile-tvOS.app"
             BlueprintName = "mobile-tvOS"
-            ReferencedContainer = "container:mobile.xcodeproj">
+            ReferencedContainer = "container:CerberusWallet.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <Testables>
@@ -72,7 +72,7 @@
                BlueprintIdentifier = "2D02E48F1E0B4A5D006451C7"
                BuildableName = "mobile-tvOSTests.xctest"
                BlueprintName = "mobile-tvOSTests"
-               ReferencedContainer = "container:mobile.xcodeproj">
+               ReferencedContainer = "container:CerberusWallet.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -94,7 +94,7 @@
             BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
             BuildableName = "mobile-tvOS.app"
             BlueprintName = "mobile-tvOS"
-            ReferencedContainer = "container:mobile.xcodeproj">
+            ReferencedContainer = "container:CerberusWallet.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -111,7 +111,7 @@
             BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
             BuildableName = "mobile-tvOS.app"
             BlueprintName = "mobile-tvOS"
-            ReferencedContainer = "container:mobile.xcodeproj">
+            ReferencedContainer = "container:CerberusWallet.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
