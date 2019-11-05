@@ -9,6 +9,8 @@ Official site: https://cerberus.ledger-labs.com/
 
 Video presentation: https://www.youtube.com/watch?v=4S8OyUf7cIA
 
+Medium articles: https://medium.com/@mikael.lazarev/cerberus-wallet-part-1-concept-925b80898ca0?source=friends_link&sk=c1dd6a5fccc9645107f300bea2594533
+
 <img src="https://user-images.githubusercontent.com/26343374/68207919-18c81100-ffe1-11e9-8623-23be911b6718.png" width="23%" />&nbsp;&nbsp;
 <img src="https://user-images.githubusercontent.com/26343374/68207920-1960a780-ffe1-11e9-87ac-01122a3ef0e4.png" width="23%" />&nbsp;&nbsp;
 <img src="https://user-images.githubusercontent.com/26343374/68207923-1960a780-ffe1-11e9-9781-61a1af9c54c3.png" width="23%" />&nbsp;&nbsp;
