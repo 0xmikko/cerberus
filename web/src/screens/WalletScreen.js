@@ -8,14 +8,23 @@ import * as actions from "../store/actions";
 import {QRCode} from "react-qr-svg";
 import * as status from '../store/utils/status';
 
-function WalletScreen({match: {params: {id}}, send, deposit, accounts, paymentStatus}) {
+function WalletScreen({match: {params: {id}}, send, deposit, accounts, paymentStatus, Web3}) {
 
     console.log(id)
 
-    const [depositAmount, setDepositAmount] = useState(null);
-    const [sendRecipient, setSendRecipient] = useState(null);
-    const [sendAmount, setSendAmount] = useState(null);
+    const [depositAmount, setDepositAmount] = useState(undefined);
+    const [sendRecipient, setSendRecipient] = useState(undefined);
+    const [sendAmount, setSendAmount] = useState(undefined);
 
+    if (!Web3.utils.isAddress(id)) {
+        return <div className="App">
+            <header className="App-header">
+                <div>Incorrect contract address: <br /><br />
+                    {id}
+                </div>
+            </header>
+        </div>
+    }
 
     const depositMoney = () => {
         console.log(depositAmount)

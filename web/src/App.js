@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
-import { Route, Switch, Redirect } from "react-router";
-import { Container } from "react-bootstrap";
+import { Route, Switch } from "react-router";
 import { withRouter } from "react-router";
 import { connect } from "react-redux";
 import * as actions from "./store/actions";
@@ -24,6 +23,7 @@ export function App({getWeb3, Web3}) {
     <Switch>
       <Route path="/wallet/:id/" component={WalletScreen} />
       <Route path="/welcome/" component={WelcomeScreen} />
+      <Route path="/*" component={WelcomeScreen} />
     </Switch>
   );
 }

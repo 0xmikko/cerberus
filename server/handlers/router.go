@@ -77,7 +77,16 @@ func StartServer(services services.Services, port string) {
 		staticPath = "/app/server/landing"
 	}
 
+	walletPath := "../web/build"
+	if config.GetConfigType() == config.PROD {
+		walletPath = "/app/web/build"
+	}
+
 	router.Use(static.Serve("/", static.LocalFile(staticPath, false)))
+	router.Use(static.Serve("/wallet", static.LocalFile(walletPath, false)))
+	router.NoRoute(func(c *gin.Context) {
+		c.File(walletPath + "/index.html")
+	})
 
 	log.Println("Starting service at :" + port)
 	err := router.Run(":" + port)

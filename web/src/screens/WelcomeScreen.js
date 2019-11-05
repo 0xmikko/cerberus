@@ -1,5 +1,5 @@
-import React, {useEffect, useState} from 'react';
-import {Button, Row, Container, Col, Form, FormControl} from 'react-bootstrap';
+import React, {useEffect} from 'react';
+import {Button, Form, FormControl} from 'react-bootstrap';
 import * as reducers from "../store/reducers";
 import * as actions from "../store/actions";
 import {connect} from "react-redux";
@@ -7,9 +7,9 @@ import * as status from '../store/utils/status';
 
 function WelcomeScreen({Web3, accounts, gasPrice, deployContract, contractDeployStatus, contractAddress, history}) {
 
-    const address = "";
-
-    const accountsRendered = accounts.map(acc => <>{acc}<br /></>)
+    // const address = "";
+    //
+    // const accountsRendered = accounts.map(acc => <>{acc}<br /></>)
 
     useEffect(() => {
 

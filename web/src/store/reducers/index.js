@@ -1,6 +1,5 @@
 import {combineReducers} from 'redux';
 import { connectRouter } from 'connected-react-router'
-import * as actionTypes from '../actions/actionTypes';
 import web3, * as fromWeb3 from './web3';
 
 
