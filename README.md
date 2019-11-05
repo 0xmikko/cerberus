@@ -49,7 +49,9 @@ A smart contract for a wallet is developed as simple as possible, which simplifi
 
 #### Deploy smartcontract
 address _link - ChainLink token smartcontract address
+
 address _alarmOracle - ChainLink Alarm Oracle smartcontract address (more: https://docs.chain.link/docs/chainlink-alarm-clock)
+
 bytes32 _alarmJobId - ChainLink Alarm Job Id
 uint256 _alarmPayment - Amount in LINK for Alarm Job (usually 1 LINK)
 address _cerberusOracle - Cerberus Oracle smartcontract address
