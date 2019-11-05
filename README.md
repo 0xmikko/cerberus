@@ -38,8 +38,8 @@ In addition, if you receive a notification that someone signed a transaction usi
 
 * SmartContract Wallet (Solidity, ChainLink)
 * ChainLink external adapter (Golang)
-* Mobile Application (React Native)
 * Backend server (Golang, MongoDB, go-ethereum, gin-gonic, APNS2)
+* Mobile Application (React Native)
 * Web wallet (ReactJS, Web3)
 
 ### SmartContract Wallet
