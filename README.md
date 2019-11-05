@@ -48,7 +48,7 @@ Stack: Solidity, ChainLink
 A smart contract for a wallet is developed as simple as possible, which simplifies its audit. The current version of the contract allows you to deposit money on it and transfer them to other accounts.
 
 #### Deploy smartcontract
-address _link - ChainLink token smartcontract address
+address _link - ChainLink token smartcontract address<br/>
 
 address _alarmOracle - ChainLink Alarm Oracle smartcontract address (more: https://docs.chain.link/docs/chainlink-alarm-clock)
 
