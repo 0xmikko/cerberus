@@ -48,14 +48,13 @@ Stack: Solidity, ChainLink
 A smart contract for a wallet is developed as simple as possible, which simplifies its audit. The current version of the contract allows you to deposit money on it and transfer them to other accounts.
 
 #### Deploy smartcontract
-address _link - ChainLink token smartcontract address<br/>
+*address _link* - ChainLink token smartcontract address<br/>
 address _alarmOracle - ChainLink Alarm Oracle smartcontract address (more: https://docs.chain.link/docs/chainlink-alarm-clock)<br/>
-
-bytes32 _alarmJobId - ChainLink Alarm Job Id
-uint256 _alarmPayment - Amount in LINK for Alarm Job (usually 1 LINK)
-address _cerberusOracle - Cerberus Oracle smartcontract address
-bytes32 _cerberusJobId - Cerberus Job ID
-uint256 _cerberusPayment - Amount in LINK for Cerberus Job (usually 1 LINK)
+bytes32 _alarmJobId - ChainLink Alarm Job Id<br/>
+uint256 _alarmPayment - Amount in LINK for Alarm Job (usually 1 LINK)<br/>
+address _cerberusOracle - Cerberus Oracle smartcontract address<br/>
+bytes32 _cerberusJobId - Cerberus Job ID<br/>
+uint256 _cerberusPayment - Amount in LINK for Cerberus Job (usually 1 LINK)<br/>
 
 ### Disclaimer
 
