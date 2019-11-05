@@ -75,6 +75,15 @@ Everything is simple here - the usual function for receiving funds.
 
 5. The oracle calls the *fulfillPaymentRequest* method and passes the result of the confirmation request to the server as the *_data* parameter. If the answer is yes, then the funds are transferred to the specified address.
 
+### External Adapter
+Stack: Golang, Bridges framework (https://github.com/linkpoolio/bridges)
+
+The task of the external adapter is to make a GET request to the Cerberus Server and pass the received value back to the oracle. For this, the project uses the Bridges framework, which makes this task elementary.
+
+### Backend
+Stack: Golang, MongoDB, go-ethereum, gin-gonic
+
+
 ### Disclaimer
 
 This application is provided "as is" and "with all faults." Me as developer makes no representations or warranties of any kind concerning the safety, suitability, lack of viruses, inaccuracies, typographical errors, or other harmful components of this software. There are inherent dangers in the use of any software, and you are solely responsible for determining whether this software product is compatible with your equipment and other software installed on your equipment. You are also solely responsible for the protection of your equipment and backup of your data, and THE PROVIDER will not be liable for any damages you may suffer in connection with using, modifying, or distributing this software product.
