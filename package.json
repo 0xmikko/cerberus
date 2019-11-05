@@ -4,6 +4,6 @@
   "private": true,
   "engines": { "node": "10.15.3", "npm": "6.4.1" },
   "scripts": {
-    "postinstall": "cd web && npm run build"
+    "postinstall": "cd web && npm install --only=dev && npm install && npm run build"
   }
 }
