@@ -14,7 +14,15 @@ Video presentation: https://www.youtube.com/watch?v=4S8OyUf7cIA
 <img src="https://user-images.githubusercontent.com/26343374/68207923-1960a780-ffe1-11e9-9781-61a1af9c54c3.png" width="23%" />&nbsp;&nbsp;
 <img src="https://user-images.githubusercontent.com/26343374/68207924-1960a780-ffe1-11e9-8863-2cd482cb9059.png" width="23%" />
 
-### User Story
+### Problem
+
+Cryptocurrency security is based on the idea that only you have access to the private key. And indeed, today it is impossible to pick up a private key, knowing the public one.
+
+Despite this, for daily transactions, you must store the private key on your computer or smartphone. Often, hackers gain access to a private key using viruses or trojans.
+
+To ensure safety you must follow a lot of rules. One small mistake (for example, accidentally opening a file sent by e-mail) can lead to a complete loss of all crypto assets.
+
+In addition, you cannot verify that your private key is cracked. Some hackers can store it and control your account to get the most money.
 
 ### Components & stack
 
