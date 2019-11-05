@@ -83,6 +83,17 @@ The task of the external adapter is to make a GET request to the Cerberus Server
 ### Backend
 Stack: Golang, MongoDB, go-ethereum, gin-gonic
 
+#### User authorisation / registration
+The current version uses simple login / password authorisation using JWT tokens. Authorisation is required in order to transfer the list of user wallets and provide the ability to receive data. Currently, the binding of wallets to the token for push notifications also uses authorisation.
+
+#### Transaction monitoring
+The Cerberus Wallet server saves all user wallets and constantly monitors events at connected addresses. To monitor events for each wallet, a separate goroutine is used.
+
+As soon as the NewPaymentRegistered event occurs, the server sends a push notification to all devices connected by the user. The structure of push notifications includes a code that must be entered to confirm the transaction (more simple logic is currently implemented).
+
+As you know, the push notification delivery system is quite reliable and has proven itself in banking applications.
+
+Also, in addition to sending push notifications, the system can send notifications to email clients, via SMS and instant messengers (a number of these functions are under development)
 
 ### Disclaimer
 
