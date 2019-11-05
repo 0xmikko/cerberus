@@ -1,1 +1,7 @@
-export { getWeb3, deployContract, depositLinks, depositMoney, sendMoney } from './web3'
+export {
+  getWeb3,
+  deployContract,
+  depositLinks,
+  depositMoney,
+  sendMoney,
+} from './web3';
