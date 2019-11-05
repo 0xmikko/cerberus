@@ -8,6 +8,7 @@
     "eslint": "^6.6.0",
     "history": "^4.10.1",
     "jwt-decode": "^2.2.0",
+    "lodash": "^4.17.15",
     "react": "^16.11.0",
     "react-bootstrap": "^1.0.0-beta.14",
     "react-dom": "^16.11.0",
