@@ -7,7 +7,7 @@ This application was designed from scratch especially for <a href="https://coinl
 
 Official site: https://cerberus.ledger-labs.com/
 
-Video presentation: https://www.youtube.com/watch?v=4S8OyUf7cIA&feature=youtu.be
+Video presentation: https://www.youtube.com/watch?v=4S8OyUf7cIA
 
 
 ### User Story
