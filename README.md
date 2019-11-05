@@ -56,7 +56,11 @@ A smart contract for a wallet is developed as simple as possible, which simplifi
 *bytes32 _cerberusJobId* - Cerberus Job ID<br/>
 *uint256 _cerberusPayment* - Amount in LINK for Cerberus Job (usually 1 LINK)<br/>
 
-#### Deposit money
+#### Deposit money flow
+Everything is simple here - the usual function for receiving funds.
+
+#### Sending money flow
+
 
 ### Disclaimer
 
