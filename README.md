@@ -29,8 +29,8 @@ In addition, you cannot verify that your private key is cracked. Some hackers ca
 Two-factor authorization. In order to transfer funds, you need to confirm the transaction using the Cerberus Wallet mobile application within 3-5 minutes after it got into the blockchain. When the time is up, the smart contract checks the confirmation and sends the money only if the transaction has been confirmed.
 
 This approach significantly increases the security of a crypto wallet, since two conditions must be met to transfer money:
-Know private key
-Confirm transaction using smartphone
+* Know private key
+* Confirm transaction using smartphone
 
 In addition, if you receive a notification that someone signed a transaction using your private key, it means that your private key has been hacked. Unlike a regular crypto wallet, you can cancel this transaction and then transfer your money to a secure wallet or account.
 
