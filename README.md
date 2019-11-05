@@ -61,6 +61,17 @@ Everything is simple here - the usual function for receiving funds.
 
 #### Sending money flow
 
+1. To send funds, the user calls method *sendMoney(address _to, uint256 _amount)*
+
+2. The sendMoney method, in turn, emits a *NewPaymentRegistered* event, which is used to monitor transactions.
+
+3. *sendMoney* method also calls ChainLink Alarm Oracle and asks to call the *fulfillConfirmationRequest* method after the specified time (time to sign the transaction). The method also writes transaction parameters to mapping orders by the key that it received during the request (reqId)
+
+![sc_flow_1](https://user-images.githubusercontent.com/26343374/68213193-259e3200-ffec-11e9-8731-a75fbda0e9a4.png)
+
+4. After the specified time has passed, the fulfillConfirmationRequest method is called, which sends a request to Cerberus Oracle to find out if the user has signed the transaction.
+
+5.The oracle calls the makePayment method and passes the result of the confirmation request to the server as the _data parameter. If the answer is yes, then the funds are transferred to the specified address.
 
 ### Disclaimer
 
