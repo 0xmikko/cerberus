@@ -95,6 +95,14 @@ As you know, the push notification delivery system is quite reliable and has pro
 
 Also, in addition to sending push notifications, the system can send notifications to email clients, via SMS and instant messengers (a number of these functions are under development)
 
+#### Transaction Confirmations
+
+When the monitoring system detects a new transaction, a push notification is sent to the user, and the transaction itself falls into the list of transactions for confirmation.
+
+If the user logged in to the application within the specified time, the system will mark this in the database and confirm it upon request from the Oracle Cerberus.
+
+At the same time, the logic is arranged in such a way that if at least one device rejected the transaction, then it is already impossible to confirm it. This is done to provide greater security.
+
 ### Disclaimer
 
 This application is provided "as is" and "with all faults." Me as developer makes no representations or warranties of any kind concerning the safety, suitability, lack of viruses, inaccuracies, typographical errors, or other harmful components of this software. There are inherent dangers in the use of any software, and you are solely responsible for determining whether this software product is compatible with your equipment and other software installed on your equipment. You are also solely responsible for the protection of your equipment and backup of your data, and THE PROVIDER will not be liable for any damages you may suffer in connection with using, modifying, or distributing this software product.
