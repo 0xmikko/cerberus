@@ -6,6 +6,7 @@ import * as reducers from '../store/reducers';
 import * as actions from '../store/actions';
 import {QRCode} from 'react-qr-svg';
 import * as status from '../store/utils/status';
+import {Helmet} from "react-helmet";
 
 function WalletScreen({
   match: {
@@ -57,6 +58,9 @@ function WalletScreen({
   if (paymentStatus === status.STATUS_LOADING) {
     return (
       <div className="App">
+        <Helmet>
+          <title>Cerberus Wallet: {id}</title>
+        </Helmet>
         <header className="App-header">
           Operations is in progress
           <br />

@@ -4,6 +4,7 @@ import * as reducers from '../store/reducers';
 import * as actions from '../store/actions';
 import {connect} from 'react-redux';
 import * as status from '../store/utils/status';
+import {Helmet} from "react-helmet";
 
 function WelcomeScreen({
   Web3,
@@ -32,6 +33,9 @@ function WelcomeScreen({
   if (contractDeployStatus === status.STATUS_LOADING) {
     return (
       <div className="App">
+        <Helmet>
+          <title>Cerberus Wallet: Deploying</title>
+        </Helmet>
         <header className="App-header">
           Deploying new wallet, please wait...
         </header>
@@ -42,6 +46,9 @@ function WelcomeScreen({
 
   return (
     <div className="App">
+      <Helmet>
+        <title>Welcome to Cerberus Wallet</title>
+      </Helmet>
       <header className="App-header">
         Welcome to Cerberus Wallet
         <br />
