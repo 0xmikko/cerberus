@@ -77,6 +77,8 @@ Everything is simple here - the usual function for receiving funds.
 
 5. The oracle calls the *fulfillPaymentRequest* method and passes the result of the confirmation request to the server as the *_data* parameter. If the answer is yes, then the funds are transferred to the specified address.
 
+More info: https://github.com/MikaelLazarev/cerberus/blob/master/contract/
+
 ### External Adapter
 Stack: Golang, Bridges framework (https://github.com/linkpoolio/bridges)
 
