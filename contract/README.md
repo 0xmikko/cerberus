@@ -1,4 +1,4 @@
-# Chainlink Truffle Box
+# Cerberus Smart Contract
 
 Implementation of a [Chainlink requesting contract](https://docs.chain.link/docs/create-a-chainlinked-project).
 
@@ -8,7 +8,11 @@ Implementation of a [Chainlink requesting contract](https://docs.chain.link/docs
 
 ## Installation
 
-Package installation should have occurred for you during the Truffle Box setup. However, if you add dependencies, you'll need to add them to the project by running:
+1. Clone mono repository `git clone https://github.com/MikaelLazarev/cerberus`
+
+2. Go to contracts dir: `cd contract`
+
+3. Install truffle box dependecies
 
 ```bash
 npm install
