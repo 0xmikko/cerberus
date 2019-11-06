@@ -76,3 +76,7 @@ Everything is simple here - the usual function for receiving funds.
 ![sc_flow2](https://user-images.githubusercontent.com/26343374/68214013-ad387080-ffed-11e9-8eb1-be20fb761db7.png)
 
 5. The oracle calls the *fulfillPaymentRequest* method and passes the result of the confirmation request to the server as the *_data* parameter. If the answer is yes, then the funds are transferred to the specified address.
+
+## Backlog
+[] Add cold wallet account which has rights to transfer money without confirmation, but this transaction could be cancelled using Cerberus Wallet app
+[] Cover tests
